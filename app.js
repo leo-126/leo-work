@@ -5,6 +5,8 @@ const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
 let works = [];
+let timeline = [];
+let selectedYear;
 let featured = [];
 let slideIndex = 0;
 let returnPoint;
@@ -72,11 +74,69 @@ function makeCard(work) {
   cover.append(artwork(work.cover || work.poster, true));
   if (work.badge) cover.append(badge(work.badge));
   if (work.episodeInfo) cover.append(el("span", "episode", work.episodeInfo));
-  card.append(cover, el("h2", "", work.title), el("p", "", work.subtitle));
+  card.append(cover, el("h2", "", work.title), el("p", "", [work.role ? "饰 " + work.role : "", work.subtitle].filter(Boolean).join(" · ")));
   return card;
 }
 
+function renderTelevision(visible) {
+  const panel = el("section", "television-extras");
+  panel.id = "television-extras";
+  const heading = el("div", "section-title");
+  heading.append(el("h2", "", "精选剧集"), el("span", "muted", "光影之间，遇见不同人生"));
+  const rail = el("div", "poster-rail");
+  visible.slice(0, 8).forEach(work => {
+    const card = el("a", "portrait-card");
+    card.href = workRoute(work);
+    const image = el("div", "portrait-image");
+    image.append(artwork(work.poster, true));
+    if (work.badge) image.append(badge(work.badge));
+    if (work.rating) image.append(el("span", "rating", work.rating));
+    card.append(image, el("h3", "", work.title), el("p", "", work.role ? "饰 " + work.role : work.subtitle));
+    rail.append(card);
+  });
+  panel.append(heading, rail);
+  carousel.after(panel);
+
+  const history = el("section", "timeline-section");
+  history.id = "television-timeline";
+  const title = el("div", "section-title");
+  title.append(el("h2", "", "时间历程"), el("span", "muted", "按拍摄年份 · 作品与角色"));
+  const years = [...new Set(timeline.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
+  if (!years.includes(selectedYear)) selectedYear = years[0];
+  const tabs = el("div", "year-tabs");
+  tabs.setAttribute("aria-label", "选择拍摄年份");
+  const content = el("div", "year-content");
+  content.setAttribute("aria-live", "polite");
+  function renderYear() {
+    [...tabs.children].forEach(button => button.setAttribute("aria-pressed", String(button.textContent === selectedYear)));
+    const items = timeline.filter(item => item.year === selectedYear);
+    const label = el("div", "year-label");
+    label.append(el("strong", "", selectedYear), el("span", "", items.length + " 部作品"));
+    const list = el("div", "year-works");
+    items.forEach(item => {
+      const work = visible.find(work => work.title === item.title);
+      const row = el(work ? "a" : "div", "year-work");
+      if (work) row.href = workRoute(work);
+      row.append(el("strong", "", item.title), el("span", "", "饰 " + item.role));
+      if (work) row.append(el("span", "year-arrow", "查看作品 ↗"));
+      list.append(row);
+    });
+    content.replaceChildren(label, list);
+  }
+  years.forEach(year => {
+    const button = el("button", "", year);
+    button.type = "button";
+    button.addEventListener("click", () => { selectedYear = year; renderYear(); });
+    tabs.append(button);
+  });
+  renderYear();
+  history.append(title, tabs, content);
+  panel.append(history);
+}
+
 function showHome(category) {
+  get("television-extras")?.remove();
+  home.classList.toggle("television-page", category === "电视剧");
   detail.replaceChildren();
   detail.hidden = true;
   home.hidden = false;
@@ -94,7 +154,8 @@ function showHome(category) {
   document.querySelector(".hero-controls").hidden = featured.length < 2;
   get("dots").hidden = featured.length < 2;
   renderSlide();
-  get("list-title").textContent = category === "首页" ? "全部作品" : category;
+  if (category === "电视剧") renderTelevision(visible);
+  get("list-title").textContent = category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
   get("work-count").textContent = visible.length + " 部";
   get("grid").replaceChildren(...(visible.length ? visible.map(makeCard) : [el("p", "muted", "这个分类暂时还没有作品。")]));
 }
@@ -179,6 +240,7 @@ function showDetail(work) {
   const duration = work.episodeDuration || work.duration;
   const durationText = duration ? (work.episodes || work.episodeDuration ? "单集片长 " : "片长 ") + duration : "";
   copy.append(el("p", "detail-meta", [work.region, work.genre || work.type, work.releaseDate || work.year, episodes, durationText].filter(Boolean).join(" / ")));
+  if (work.role) copy.append(el("p", "detail-role", "吴磊 饰 " + work.role));
   info.append(poster, copy);
   const section = el("section", "sources");
   const rows = sources.map(externalSource).filter(Boolean);
@@ -278,6 +340,8 @@ async function init() {
     if (!response.ok) throw new Error("HTTP " + response.status);
     works = await response.json();
     if (!Array.isArray(works)) throw new Error("作品数据需要是数组");
+    const timelineResponse = await fetch(new URL("timeline.json", dataUrl));
+    if (timelineResponse.ok) timeline = await timelineResponse.json();
     get("status").hidden = true;
     history.scrollRestoration = "manual";
     window.addEventListener("hashchange", route);
