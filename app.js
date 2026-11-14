@@ -1,4 +1,11 @@
-const categories = ["首页", "电视剧", "电影", "Vlog", "杂志", "商务"];
+// 导航名称和电视剧页面文案可在这里修改。
+const categories = ["首页", "电视剧", "电影", "Vlog", "综艺", "时刻"];
+const televisionCopy = {
+  featuredTitle: "精选剧集",
+  featuredSubtitle: "光影之间，遇见不同人生",
+  timelineTitle: "百年影人进行时",
+  timelineSubtitle: "我有自己的路要走",
+};
 const get = (id) => document.getElementById(id);
 const dataUrl = new URL("data/works.json", document.baseURI);
 const home = get("home");
@@ -92,7 +99,7 @@ function renderTelevision(visible) {
   const panel = el("section", "television-extras");
   panel.id = "television-extras";
   const heading = el("div", "section-title");
-  heading.append(el("h2", "", "精选剧集"), el("span", "muted", "光影之间，遇见不同人生"));
+  heading.append(el("h2", "", televisionCopy.featuredTitle), el("span", "muted", televisionCopy.featuredSubtitle));
   const rail = el("div", "poster-rail");
   visible.slice(0, 8).forEach((work, index) => {
     const card = el("a", "portrait-card");
@@ -110,7 +117,7 @@ function renderTelevision(visible) {
   const history = el("section", "timeline-section");
   history.id = "television-timeline";
   const title = el("div", "section-title");
-  title.append(el("h2", "", "时间历程"), el("span", "muted", "按拍摄年份 · 作品与角色"));
+  title.append(el("h2", "", televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
   const years = [...new Set(timeline.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
   if (!years.includes(selectedYear)) selectedYear = years[0];
   const tabs = el("div", "year-tabs");

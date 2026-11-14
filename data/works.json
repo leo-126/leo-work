@@ -34,7 +34,7 @@
   {
     "id": "golden-rooster-39",
     "title": "第39届金鸡奖提名者表彰仪式",
-    "type": "电影",
+    "type": "时刻",
     "year": "2026",
     "poster": "../images/第39届金鸡奖提名者表彰仪式.png",
     "subtitle": "提名者感言 · 现场视频",
@@ -50,16 +50,11 @@
     ]
   },
   {
-    "id": "demo-mountain-sea",
-    "title": "山海之间（演示）",
+    "id": "qun-xing-shan-yao-shi",
+    "title": "群星闪耀时",
     "type": "电影",
-    "year": "",
-    "poster": "../images/mountain-sea.png",
-    "subtitle": "虚构电影 · 电影卡片样例",
-    "badge": "VIP",
-    "episodeInfo": "样例片段",
-    "description": "虚构的作品条目，用于演示电影分类、VIP 角标与详情排版。",
-    "duration": "102 分钟",
+    "cover": "../images/电影/群星闪耀时-1.jpg",
+    "poster": "../images/电影/群星闪耀时-2.jpg",
     "playSources": []
   },
   {
