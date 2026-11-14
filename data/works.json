@@ -1,0 +1,108 @@
+[
+  {
+    "id": "cycling-hainan-ep01",
+    "title": "骑有此理 · 环海南岛篇 EP01",
+    "type": "Vlog",
+    "year": "2026",
+    "poster": "../images/骑有此理.jpg",
+    "subtitle": "物理意义上烫烫的一集",
+    "badge": "更新",
+    "episodeInfo": "EP01",
+    "description": "吴磊《骑有此理》环海南岛篇第一集，记录海南骑行途中物理意义上烫烫的一天。",
+    "heroTitle": "骑有此理",
+    "bvid": "BV1mpxR6KESh",
+    "playSources": [
+      {
+        "platform": "小红书",
+        "link": "https://xhslink.cn/o/1rGckJG4CKH"
+      },
+      {
+        "platform": "微博",
+        "link": "https://weibo.com/2142058927/5361855369578108"
+      },
+      {
+        "platform": "B站",
+        "link": "https://b23.tv/BV1mpxR6KESh",
+        "bvid": "BV1mpxR6KESh"
+      },
+      {
+        "platform": "抖音",
+        "link": "https://v.douyin.com/RpBCFM8Ua_M/"
+      }
+    ]
+  },
+  {
+    "id": "jian-lai-trailer",
+    "title": "剑来预告",
+    "type": "电视剧",
+    "year": "2026",
+    "poster": "../images/剑来.jpg",
+    "subtitle": "《剑来》剧集预告",
+    "badge": "预告",
+    "episodeInfo": "预告片",
+    "description": "《剑来》预告视频，可在站内观看本地片段，也可前往腾讯视频或微博。",
+    "localVideo": "../剑来预告.mp4",
+    "heroTitle": "剑来",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://m.v.qq.com/x/m/play?vid=k41027br6lm&cid=mzc002001hup007&ptag=share_11_11&pageStyle=vdp_long_or_middle&pageType=long"
+      },
+      {
+        "platform": "微博",
+        "link": "https://video.weibo.com/show?fid=1034:5359028373749827"
+      }
+    ]
+  },
+  {
+    "id": "golden-rooster-39",
+    "title": "第39届金鸡奖提名者表彰仪式",
+    "type": "电影",
+    "year": "2026",
+    "poster": "../images/第39届金鸡奖提名者表彰仪式.png",
+    "subtitle": "提名者感言 · 现场视频",
+    "badge": "现场",
+    "episodeInfo": "仪式片段",
+    "description": "第39届金鸡奖提名者表彰仪式的现场视频与微博来源。",
+    "localVideo": "../提名获奖感言.mp4",
+    "heroTitle": "第39届金鸡奖",
+    "playSources": [
+      {
+        "platform": "微博",
+        "link": "https://weibo.com/5996027617/5363412978631324"
+      }
+    ]
+  },
+  {
+    "id": "demo-mountain-sea",
+    "title": "山海之间（演示）",
+    "type": "电影",
+    "year": "",
+    "poster": "../images/mountain-sea.png",
+    "subtitle": "虚构电影 · 电影卡片样例",
+    "badge": "VIP",
+    "episodeInfo": "样例片段",
+    "description": "虚构的作品条目，用于演示电影分类、VIP 角标与详情排版。",
+    "duration": "102 分钟",
+    "playSources": []
+  },
+  {
+    "id": "demo-summer",
+    "title": "盛夏来信（演示）",
+    "type": "电视剧",
+    "year": "",
+    "poster": "../images/mountain-sea.png",
+    "subtitle": "虚构剧集 · 更新状态样例",
+    "badge": "热播中",
+    "episodeInfo": "更新至10集",
+    "description": "虚构的作品条目，用于演示热播角标、集数和 B 站播放器。片源沿用骑行视频供测试。",
+    "bvid": "BV1mpxR6KESh",
+    "playSources": [
+      {
+        "platform": "B站（测试片源）",
+        "link": "https://www.bilibili.com/video/BV1mpxR6KESh",
+        "bvid": "BV1mpxR6KESh"
+      }
+    ]
+  }
+]
