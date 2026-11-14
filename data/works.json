@@ -32,33 +32,6 @@
     ]
   },
   {
-    "id": "jian-lai-trailer",
-    "title": "剑来",
-    "type": "电视剧",
-    "year": "2026",
-    "poster": "../images/剑来-2.jpg",
-    "subtitle": "剧集预告",
-    "badge": "预告",
-    "episodeInfo": "",
-    "description": "一方看似普通的小镇实则崩塌在即，各方势力以此地为棋盘，展开筹谋布局。陋巷少年陈平安以赤子之心对抗天命，纵使身陷“笼”中，也要破出一条生路——天道崩塌，我陈平安，唯有一剑，可搬山，断江，倒海，降妖，镇魔，敕神，摘星，摧城，开天！",
-    "cover": "../images/剑来-1.jpg",
-    "region": "中国大陆",
-    "genre": "剧情/武侠",
-    "episodes": "全24集",
-    "bvid": "BV15cs96zEvi",
-    "playSources": [
-      {
-        "platform": "腾讯视频",
-        "link": "https://m.v.qq.com/x/m/play?vid=k41027br6lm&cid=mzc002001hup007&ptag=share_11_11&pageStyle=vdp_long_or_middle&pageType=long"
-      },
-      {
-        "platform": "B站",
-        "link": "https://b23.tv/BV15cs96zEvi",
-        "bvid": "BV15cs96zEvi"
-      }
-    ]
-  },
-  {
     "id": "golden-rooster-39",
     "title": "第39届金鸡奖提名者表彰仪式",
     "type": "电影",
@@ -90,21 +63,399 @@
     "playSources": []
   },
   {
-    "id": "demo-summer",
-    "title": "盛夏来信（演示）",
+    "id": "jianlai",
+    "title": "剑来",
     "type": "电视剧",
-    "year": "",
-    "poster": "../images/mountain-sea.png",
-    "subtitle": "虚构剧集 · 更新状态样例",
-    "badge": "热播中",
-    "episodeInfo": "更新至10集",
-    "description": "虚构的作品条目，用于演示热播角标、集数和 B 站播放器。片源沿用骑行视频供测试。",
-    "bvid": "BV1mpxR6KESh",
+    "year": "2026",
+    "poster": "../images/电视剧/剑来-2.jpg",
+    "subtitle": "剧集预告",
+    "badge": "预告",
+    "episodeInfo": "",
+    "description": "一方看似普通的小镇实则崩塌在即，各方势力以此地为棋盘，展开筹谋布局。陋巷少年陈平安以赤子之心对抗天命，纵使身陷“笼”中，也要破出一条生路——天道崩塌，我陈平安，唯有一剑，可搬山，断江，倒海，降妖，镇魔，敕神，摘星，摧城，开天！",
+    "cover": "../images/电视剧/剑来-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/武侠",
+    "episodes": "全24集",
+    "role": "陈平安",
+    "bvid": "BV15cs96zEvi",
     "playSources": [
       {
-        "platform": "B站（测试片源）",
-        "link": "https://www.bilibili.com/video/BV1mpxR6KESh",
-        "bvid": "BV1mpxR6KESh"
+        "platform": "腾讯视频",
+        "link": "https://m.v.qq.com/x/m/play?vid=k41027br6lm&cid=mzc002001hup007&ptag=share_11_11&pageStyle=vdp_long_or_middle&pageType=long"
+      },
+      {
+        "platform": "B站",
+        "link": "https://b23.tv/BV15cs96zEvi",
+        "bvid": "BV15cs96zEvi"
+      }
+    ]
+  },
+  {
+    "id": "Amidst a Snowstorm of Love",
+    "title": "在暴雪时分",
+    "type": "电视剧",
+    "year": "2023",
+    "poster": "../images/电视剧/在暴雪十分-2.jpg",
+    "subtitle": "异国爱情",
+    "badge": "爱情",
+    "episodeInfo": "",
+    "description": "昔日天才级职业斯诺克选手林亦扬与当红九球选手殷果相遇在一场十年难得一遇的暴雪之夜。在殷果表弟的助攻之下，两人慢慢熟识，殷果也了解到林亦扬的往事。原来林亦扬曾经也是轰动一时的斯诺克天才，在一次比赛中因对裁判判罚有异议，争取时无意冲撞裁判而被禁赛，少年气盛的他不服判决，竟直接宣布退役，从此离开了自己引以为傲的斯诺克事业。殷果的出现，让林亦扬的人生轨迹再次转变，林亦扬不仅开始努力地追求殷果，还在殷果的带动下重拾最初的梦想，返回斯诺克赛场。最终二人共攀事业高峰，一同为职业台球事业贡献力量，并携手教练与队友，共推全民健身台球项目发展。",
+    "cover": "../images/电视剧/在暴雪十分-1.jpg",
+    "region": "中国大陆",
+    "genre": "异国爱情",
+    "episodes": "全30集",
+    "releaseDate": "2024/2/2",
+    "episodeDuration": "45分钟",
+    "role": "林亦扬",
+    "rating": "6.5",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200cg24vid/y0048i7crfg.html"
+      }
+    ]
+  },
+  {
+    "id": "Northwest Years",
+    "title": "西北岁月",
+    "type": "电视剧",
+    "year": "2024",
+    "poster": "../images/电视剧/西北岁月-2.jpg",
+    "subtitle": "历史人物",
+    "badge": "剧情",
+    "episodeInfo": "",
+    "description": "讲述老一辈无产阶级革命家解放大西北、建设大西北的丰功伟绩的故事。",
+    "cover": "../images/电视剧/西北岁月-1.jpg",
+    "region": "中国大陆",
+    "genre": "革命/历史",
+    "episodes": "全39集",
+    "releaseDate": "2024/11/5",
+    "episodeDuration": "45分钟",
+    "role": "少年习仲勋",
+    "playSources": []
+  },
+  {
+    "id": "Nothing But You",
+    "title": "爱情而已",
+    "type": "电视剧",
+    "year": "2022",
+    "poster": "../images/电视剧/爱情而已-2.jpg",
+    "subtitle": "竞技体育",
+    "badge": "都市",
+    "episodeInfo": "",
+    "description": "习惯了坐冷板凳的羽毛球运动员宋三川，因缘际会结识了人生陷入瓶颈期的梁友安，并在她的邀请下，加入了一个草台网球俱乐部。一个大龄羽转网选手，一个半路出家的俱乐部经理人，和队友们携手克服困难并肩奋战，打造了一个了不起的职业俱乐部，也开启了属于他们自己的第二人生。在此过程中，宋三川和梁友安逐渐萌生爱意，也面临着来自观念和阅历的冲突。随着俱乐部的不断发展，两人在一次次应对挑战中超越自我，最终收获了全新的职业成长，和互为底气的美好爱情。",
+    "cover": "../images/电视剧/爱情而已-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/爱情",
+    "episodes": "全38集",
+    "releaseDate": "2023/3/27",
+    "episodeDuration": "45分钟",
+    "role": "宋三川",
+    "rating": "8.2",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200x1fpzo9/d00454fs5f8.html"
+      }
+    ]
+  },
+  {
+    "id": "star",
+    "title": "星汉灿烂·月升沧海",
+    "type": "电视剧",
+    "year": "2021",
+    "poster": "../images/电视剧/星汉灿烂-2.jpg",
+    "subtitle": "复仇雪耻",
+    "badge": "古装",
+    "episodeInfo": "",
+    "description": "将军凌不疑大捷归来，在追查旧案的过程中结识了被罚在乡野“思过”的留守儿童程少商，只此一眼，便是万年。背负血海深仇的凌不疑与自幼缺爱的程少商，互相吸引也彼此刺伤，在一次次共赴生死后，他们认清了彼此的感情，相互治愈、用爱消融仇恨。同时二人也在这些经 历中各自变化成长，慢慢与自己和过去和解，并坚守内心的正义，携手化解国家危机，成就一段佳话",
+    "cover": "../images/电视剧/星汉灿烂-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/爱情",
+    "episodes": "全56集",
+    "releaseDate": "2022/7/5",
+    "episodeDuration": "45分钟",
+    "role": "凌不疑",
+    "rating": "7.7",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200vmd652y/w00439okmxo.html"
+      }
+    ]
+  },
+  {
+    "id": "Our Times",
+    "title": "启航：当风起时",
+    "type": "电视剧",
+    "year": "2020",
+    "poster": "../images/电视剧/启航-2.jpg",
+    "subtitle": "时代传奇",
+    "badge": "创业",
+    "episodeInfo": "",
+    "description": "九十年代初期，随着改革开放深入，信息产业发展掀开新的一页。燕京大学计算机研究所的两个青年萧闯与裴庆华从偷做汉卡入行，被主任谭启章选中，跻身电脑销售的大潮。以二人为首的众研究员瞅准时机，搭上政策春风，从代理国外电脑做起，向自主研发过渡，从草根蜕变成一代商业奇才的故事，同时记载了20世纪末中国快速发展的那段历史。",
+    "cover": "../images/电视剧/启航-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "episodes": "全36集",
+    "releaseDate": "2021/9/14",
+    "episodeDuration": "45分钟",
+    "role": "萧闯",
+    "rating": "7.7",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc002008e82yms/z00408a067g.html"
+      }
+    ]
+  },
+  {
+    "id": "long",
+    "title": "长歌行",
+    "type": "电视剧",
+    "year": "2020",
+    "poster": "../images/电视剧/长歌行-2.jpg",
+    "subtitle": "草原雄鹰",
+    "badge": "古装",
+    "episodeInfo": "",
+    "description": "在唐武德九年，李长歌遇到了化名秦准的草原部落特勤阿诗勒隼，两人最初对立，随后逐渐建立了互相的尊重。",
+    "cover": "../images/电视剧/长歌行-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/古装",
+    "episodes": "全49集",
+    "releaseDate": "2021/3/31",
+    "episodeDuration": "45分钟",
+    "role": "阿诗勒隼",
+    "rating": "6.1",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200c6aodyr/t0036kis46j.html"
+      }
+    ]
+  },
+  {
+    "id": "Cross Fire",
+    "title": "穿越火线",
+    "type": "电视剧",
+    "year": "2019",
+    "poster": "../images/电视剧/穿越火线-2.jpg",
+    "subtitle": "热血少年",
+    "badge": "电竞",
+    "episodeInfo": "",
+    "description": "2019年，想成为电竞选手的少年路小北在游戏中所向披靡，却因为一场意外失去了进入职业队的资格。梦想从未曾容易过，职业电竞选手之路更是不易，无数次重复枯燥的训练，一次次被命运打落谷底，他们却从未放弃。不同的时代，相同的热血青春。",
+    "cover": "../images/电视剧/穿越火线-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/奇幻",
+    "episodes": "全36集",
+    "releaseDate": "2020/7/20",
+    "episodeDuration": "50分钟",
+    "role": "路小北",
+    "rating": "7.9",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc002009a3e8xj/o0034z52rj3.html"
+      }
+    ]
+  },
+  {
+    "id": "shahai",
+    "title": "沙海",
+    "type": "电视剧",
+    "year": "2017",
+    "poster": "../images/电视剧/沙海-2.jpg",
+    "subtitle": "沙漠探险",
+    "badge": "冒险",
+    "episodeInfo": "",
+    "description": "普通高中生黎簇被卷入一个以世界现状为目的庞大计划中，然后认识了这一切的幕后布局者、以旅行摄影作家关根身份登场的吴邪的故事。",
+    "cover": "../images/电视剧/沙海-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "episodes": "全52集",
+    "releaseDate": "2018/7/20",
+    "episodeDuration": "45分钟",
+    "role": "黎簇",
+    "rating": "6.4",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/79m0lxrtiovlg73/d0027j9renh.html"
+      }
+    ]
+  },
+  {
+    "id": "Fights Break Sphere",
+    "title": "斗破苍穹",
+    "type": "电视剧",
+    "year": "2017",
+    "poster": "../images/电视剧/斗破苍穹-2.jpg",
+    "subtitle": "英雄成长",
+    "badge": "逆袭",
+    "episodeInfo": "",
+    "description": "天才少年萧炎从云端跌落成为废物，受尽冷落和嘲笑。纳兰嫣然的退婚，又让他看尽世事无常。萧炎被激起一腔热血，此时，药尘的出现和教导，让他重拾天才之名，褪去青涩张狂，成为非凡少年。在斗气大陆的世界，萧炎带着对他不离不弃的薰儿走上了成为强者的路。",
+    "cover": "../images/电视剧/斗破苍穹-1.jpg",
+    "region": "中国大陆",
+    "genre": "奇幻/古装",
+    "episodes": "全45集",
+    "releaseDate": "2018/9/3",
+    "episodeDuration": "45分钟",
+    "role": "萧炎",
+    "rating": "4.4",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/5joaacfgqdo8q8v/n0027gzq84y.html"
+      }
+    ]
+  },
+  {
+    "id": "Whirlwind Girl2",
+    "title": "旋风少女2",
+    "type": "电视剧",
+    "year": "2016",
+    "poster": "../images/电视剧/旋风少女2-2.jpg",
+    "subtitle": "青春竞技",
+    "badge": "逐梦",
+    "episodeInfo": "",
+    "description": "",
+    "cover": "../images/电视剧/旋风少女2-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "episodes": "全36集",
+    "releaseDate": "2016/7/20",
+    "episodeDuration": "45分钟",
+    "role": "胡亦枫",
+    "rating": "6.3",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc003maeeenfn6/i3282kfjypl.html"
+      }
+    ]
+  },
+  {
+    "id": "Whirlwind Girl1",
+    "title": "旋风少女1",
+    "type": "电视剧",
+    "year": "2015",
+    "poster": "../images/电视剧/旋风少女1-2.jpg",
+    "subtitle": "青春竞技",
+    "badge": "逐梦",
+    "episodeInfo": "",
+    "description": "",
+    "cover": "../images/电视剧/旋风少女1-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/爱情",
+    "episodes": "全32集",
+    "releaseDate": "2015/7/7",
+    "episodeDuration": "45分钟",
+    "role": "胡亦枫",
+    "rating": "7.2",
+    "playSources": [
+      {
+        "platform": "优酷视频",
+        "link": "https://v.youku.com/v_show/id_XMTI4MzkyMzEyMA==.html"
+      }
+    ]
+  },
+  {
+    "id": "PAL INN",
+    "title": "仙剑客栈",
+    "type": "电视剧",
+    "year": "2015",
+    "poster": "../images/电视剧/仙剑客栈-2.jpg",
+    "subtitle": "古装喜剧",
+    "badge": "跨次元",
+    "episodeInfo": "",
+    "description": "古灵精怪大大咧咧同时又有着侠骨柔肠的毛头小子李逍遥，在曾经的故事里肩负着拯救苍生的重任，经历了波澜壮阔的生离死别，铸就了不朽的传说。如今，镜头再度回到一切因缘开始的地方——余杭镇仙剑客栈，上演了一幕幕爆笑和感动交织的新的传奇。",
+    "cover": "../images/电视剧/仙剑客栈-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/武侠/古装",
+    "episodes": "全30集",
+    "releaseDate": "2015/6/16",
+    "episodeDuration": "20分钟",
+    "role": "李逍遥",
+    "rating": "7.1",
+    "playSources": [
+      {
+        "platform": "优酷视频",
+        "link": "https://v.youku.com/v_show/id_XMTI2MzM1MjQ3Ng==.html"
+      }
+    ]
+  },
+  {
+    "id": "jywxr",
+    "title": "家有外星人",
+    "type": "电视剧",
+    "year": "2008",
+    "poster": "../images/电视剧/家有外星人-2.jpg",
+    "subtitle": "科幻喜剧",
+    "badge": "儿童",
+    "episodeInfo": "",
+    "description": "该剧讲述一个地球人和外星人组合的家庭里发生的故事。创意天马行空、人物个性十足、风格幽默时尚，让人在捧腹之余体会家庭的温馨、体味人与人之间珍贵的情感。",
+    "cover": "../images/电视剧/家有外星人-1.jpg",
+    "region": "中国大陆",
+    "genre": "喜剧/科幻/儿童",
+    "episodes": "全100集",
+    "releaseDate": "2009/7/2",
+    "episodeDuration": "25分钟",
+    "role": "唐不苦",
+    "rating": "8.0",
+    "playSources": [
+      {
+        "platform": "B站",
+        "link": "https://www.bilibili.com/bangumi/play/ep369464"
+      }
+    ]
+  },
+  {
+    "id": "mxt",
+    "title": "淘气包马小跳",
+    "type": "电视剧",
+    "year": "2008",
+    "poster": "../images/电视剧/马小跳-2.jpg",
+    "subtitle": "爆笑喜剧",
+    "badge": "儿童",
+    "episodeInfo": "",
+    "description": "该剧通过描写以马小跳为代表一群孩子的快乐生活以及他们和家长、老师、同学的好玩故事，映射当代儿童的生活现实与心理现实，深情呼唤张扬孩子的天性，舒展童心、童趣，探析成人世界与儿童世界之间的隔膜、误区，倡导理解、沟通，让孩子拥有健康、和谐、完美的童年。",
+    "cover": "../images/电视剧/马小跳-1.jpg",
+    "region": "中国大陆",
+    "genre": "喜剧/家庭/儿童",
+    "episodes": "全103集",
+    "releaseDate": "2008",
+    "episodeDuration": "25分钟",
+    "role": "马小跳",
+    "rating": "8.2",
+    "playSources": [
+      {
+        "platform": "CCTV节目网",
+        "link": "https://tv.cctv.com/2011/01/14/VIDE1355917261769379.shtml"
+      }
+    ]
+  },
+  {
+    "id": "List of Langya",
+    "title": "琅琊榜",
+    "type": "电视剧",
+    "year": "2014",
+    "poster": "../images/电视剧/琅琊榜-2.jpg",
+    "subtitle": "权谋博弈",
+    "badge": "古装",
+    "episodeInfo": "",
+    "description": "",
+    "cover": "../images/电视剧/琅琊榜-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情 / 古装",
+    "episodes": "全54集",
+    "releaseDate": "2015/9/19",
+    "episodeDuration": "45分钟",
+    "role": "飞流",
+    "rating": "9.4",
+    "playSources": [
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_19rroc615w.html"
       }
     ]
   }
