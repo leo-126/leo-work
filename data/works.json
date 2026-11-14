@@ -42,10 +42,12 @@
     "episodeInfo": "仪式片段",
     "description": "第39届金鸡奖提名者表彰仪式的现场视频与微博来源。",
     "heroTitle": "第39届金鸡奖",
+    "bvid": "BV1ebW86MEfh",
     "playSources": [
       {
-        "platform": "微博",
-        "link": "https://weibo.com/5996027617/5363412978631324"
+        "platform": "B站",
+        "link": " https://b23.tv/BV1ebW86MEfh",
+        "bvid": "BV1ebW86MEfh"
       }
     ]
   },
@@ -127,7 +129,10 @@
     "releaseDate": "2024/11/5",
     "episodeDuration": "45分钟",
     "role": "少年习仲勋",
-    "playSources": []
+    "playSources": [ {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc002008c8m73o/a4100auj8ly.html"
+      }]
   },
   {
     "id": "Nothing But You",
