@@ -67,7 +67,9 @@ function renderSlide() {
   link.append(artwork(work.cover || work.poster, false, true));
   if (work.badge) link.append(badge(work.badge));
   const caption = el("span", "hero-caption");
+  if (work.id !== "golden-rooster-39") {
   caption.append(el("span", "hero-meta", [work.type, work.episodeInfo].filter(Boolean).join(" · ")));
+}
   caption.append(el("strong", "hero-title", work.heroTitle || work.title));
   if (work.subtitle) caption.append(el("span", "hero-subtitle", work.subtitle));
   link.append(caption);
