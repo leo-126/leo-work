@@ -27,12 +27,22 @@ function workRoute(work) {
   return "#work/" + encodeURIComponent(work.id);
 }
 
-function artwork(path, lazy = false) {
+function artwork(path, lazy = false, priority = false) {
   const img = el("img");
   img.alt = "";
-  if (lazy) img.loading = "lazy";
-  if (path) img.src = new URL(path, dataUrl);
-  img.addEventListener("error", () => img.remove(), { once: true });
+  img.loading = lazy ? "lazy" : "eager";
+  img.decoding = "async";
+  if (priority) img.fetchPriority = "high";
+  if (path) {
+    const original = new URL(path, dataUrl);
+    const optimized = new URL(original);
+    if (optimized.origin === location.origin) optimized.pathname = optimized.pathname.replace(/\.(jpe?g|png)$/i, ".webp");
+    img.src = optimized.href;
+    img.addEventListener("error", () => {
+      if (img.src !== original.href) img.src = original.href;
+      else img.remove();
+    }, { once: true });
+  }
   return img;
 }
 
@@ -47,7 +57,7 @@ function renderSlide() {
   if (!work) return;
   const link = el("a", "hero-link");
   link.href = workRoute(work);
-  link.append(artwork(work.cover || work.poster));
+  link.append(artwork(work.cover || work.poster, false, true));
   if (work.badge) link.append(badge(work.badge));
   const caption = el("span", "hero-caption");
   caption.append(el("span", "hero-meta", [work.type, work.episodeInfo].filter(Boolean).join(" · ")));
@@ -84,11 +94,11 @@ function renderTelevision(visible) {
   const heading = el("div", "section-title");
   heading.append(el("h2", "", "精选剧集"), el("span", "muted", "光影之间，遇见不同人生"));
   const rail = el("div", "poster-rail");
-  visible.slice(0, 8).forEach(work => {
+  visible.slice(0, 8).forEach((work, index) => {
     const card = el("a", "portrait-card");
     card.href = workRoute(work);
     const image = el("div", "portrait-image");
-    image.append(artwork(work.poster, true));
+    image.append(artwork(work.poster, index >= 4));
     if (work.badge) image.append(badge(work.badge));
     if (work.rating) image.append(el("span", "rating", work.rating));
     card.append(image, el("h3", "", work.title), el("p", "", work.role ? "饰 " + work.role : work.subtitle));
@@ -131,11 +141,12 @@ function renderTelevision(visible) {
   });
   renderYear();
   history.append(title, tabs, content);
-  panel.append(history);
+  home.append(history);
 }
 
 function showHome(category) {
   get("television-extras")?.remove();
+  get("television-timeline")?.remove();
   home.classList.toggle("television-page", category === "电视剧");
   detail.replaceChildren();
   detail.hidden = true;
