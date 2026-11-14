@@ -4,7 +4,7 @@ const televisionCopy = {
   featuredTitle: "精选剧集",
   featuredSubtitle: "光影之间，遇见不同人生",
   timelineTitle: "百年影人进行时",
-  timelineSubtitle: "我有自己的路要走",
+  timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
 const dataUrl = new URL("data/works.json", document.baseURI);
