@@ -33,24 +33,28 @@
   },
   {
     "id": "jian-lai-trailer",
-    "title": "剑来预告",
+    "title": "剑来",
     "type": "电视剧",
     "year": "2026",
-    "poster": "../images/剑来.jpg",
-    "subtitle": "《剑来》剧集预告",
+    "poster": "../images/剑来-2.jpg",
+    "subtitle": "剧集预告",
     "badge": "预告",
-    "episodeInfo": "预告片",
-    "description": "《剑来》预告视频，可在站内观看本地片段，也可前往腾讯视频或微博。",
-    "localVideo": "../剑来预告.mp4",
-    "heroTitle": "剑来",
+    "episodeInfo": "",
+    "description": "一方看似普通的小镇实则崩塌在即，各方势力以此地为棋盘，展开筹谋布局。陋巷少年陈平安以赤子之心对抗天命，纵使身陷“笼”中，也要破出一条生路——天道崩塌，我陈平安，唯有一剑，可搬山，断江，倒海，降妖，镇魔，敕神，摘星，摧城，开天！",
+    "cover": "../images/剑来-1.jpg",
+    "region": "中国大陆",
+    "genre": "剧情/武侠",
+    "episodes": "全24集",
+    "bvid": "BV15cs96zEvi",
     "playSources": [
       {
         "platform": "腾讯视频",
         "link": "https://m.v.qq.com/x/m/play?vid=k41027br6lm&cid=mzc002001hup007&ptag=share_11_11&pageStyle=vdp_long_or_middle&pageType=long"
       },
       {
-        "platform": "微博",
-        "link": "https://video.weibo.com/show?fid=1034:5359028373749827"
+        "platform": "B站",
+        "link": "https://b23.tv/BV15cs96zEvi",
+        "bvid": "BV15cs96zEvi"
       }
     ]
   },
@@ -64,7 +68,6 @@
     "badge": "现场",
     "episodeInfo": "仪式片段",
     "description": "第39届金鸡奖提名者表彰仪式的现场视频与微博来源。",
-    "localVideo": "../提名获奖感言.mp4",
     "heroTitle": "第39届金鸡奖",
     "playSources": [
       {

@@ -130,24 +130,41 @@ function showDetail(work) {
   });
   detail.replaceChildren(back);
   const sources = work.playSources || [];
-  const bvid = [work.bvid, ...sources.map((source) => source.bvid)]
-    .find((id) => /^BV[A-Za-z0-9]{10}$/.test(id || ""));
-  if (bvid) {
-    const iframe = el("iframe", "player");
-    iframe.title = work.title + " · B站播放器";
-    iframe.src = "//player.bilibili.com/player.html?bvid=" + bvid + "&autoplay=0";
-    iframe.allowFullscreen = true;
-    detail.append(iframe);
+  const embeds = [];
+  const bvid = [work.bvid, ...sources.map(source => source.bvid || source.link?.match(/BV[A-Za-z0-9]{10}/)?.[0])]
+    .find(id => /^BV[A-Za-z0-9]{10}$/.test(id || ""));
+  if (bvid) embeds.push({ platform: "B站", url: "https://player.bilibili.com/player.html?bvid=" + bvid + "&autoplay=0" });
+  for (const source of sources) {
+    try {
+      const url = new URL(source.link);
+      if (url.hostname === "v.qq.com" || url.hostname.endsWith(".v.qq.com")) {
+        const vid = url.searchParams.get("vid") || url.pathname.match(/\/([a-zA-Z0-9]{11})\.html$/)?.[1];
+        if (vid && /^[a-zA-Z0-9]{11}$/.test(vid)) embeds.push({
+          platform: source.platform, url: "https://v.qq.com/txp/iframe/player.html?vid=" + vid + "&autoplay=false"
+        });
+      }
+    } catch { /* Invalid sources are omitted from the player. */ }
   }
-  if (work.localVideo) {
-    const video = el("video", "player");
-    video.src = new URL(work.localVideo, dataUrl);
-    video.poster = new URL(work.cover || work.poster, dataUrl);
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = "metadata";
-    video.setAttribute("aria-label", work.title);
-    detail.append(video);
+  const playback = el("section", "playback");
+  if (embeds.length) {
+    playback.append(el("h2", "", "在线观看"));
+    const iframe = el("iframe", "player");
+    iframe.allowFullscreen = true;
+    iframe.allow = "fullscreen; picture-in-picture; encrypted-media";
+    const buttons = el("div", "player-tabs");
+    function selectEmbed(index) {
+      iframe.title = work.title + " · " + embeds[index].platform;
+      iframe.src = embeds[index].url;
+      [...buttons.children].forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
+    }
+    embeds.forEach((embed, index) => {
+      const button = el("button", "", embed.platform);
+      button.type = "button";
+      button.addEventListener("click", () => selectEmbed(index));
+      buttons.append(button);
+    });
+    playback.append(buttons, iframe, el("p", "muted", "如播放器无法加载，可通过下方片源链接观看。"));
+    selectEmbed(0);
   }
 
   const info = el("div", "detail-info");
@@ -156,8 +173,12 @@ function showDetail(work) {
   const copy = el("div");
   const title = el("h1", "", work.title);
   title.tabIndex = -1;
-  copy.append(title, el("p", "muted", [work.year, work.type, work.duration].filter(Boolean).join(" · ")));
-  copy.append(el("h2", "", "简介"), el("p", "description", work.description || "暂无简介。"));
+  copy.append(title);
+  if (work.year) copy.append(el("p", "detail-year", "(" + work.year + ")"));
+  const episodes = work.episodes ? "共" + String(work.episodes).replace(/^(全|共)/, "").replace(/集$/, "") + "集" : "";
+  const duration = work.episodeDuration || work.duration;
+  const durationText = duration ? (work.episodes || work.episodeDuration ? "单集片长 " : "片长 ") + duration : "";
+  copy.append(el("p", "detail-meta", [work.region, work.genre || work.type, work.releaseDate || work.year, episodes, durationText].filter(Boolean).join(" / ")));
   info.append(poster, copy);
   const section = el("section", "sources");
   const rows = sources.map(externalSource).filter(Boolean);
@@ -167,7 +188,11 @@ function showDetail(work) {
     list.append(...rows);
     section.append(list);
   } else section.append(el("p", "muted", "暂无外部片源。"));
-  detail.append(info, section);
+  const synopsis = el("section", "synopsis");
+  synopsis.append(el("h2", "", "简介"), el("p", "description", work.description || "暂无简介。"));
+  detail.append(info);
+  if (embeds.length) detail.append(playback);
+  detail.append(section, synopsis);
   back.focus({ preventScroll: true });
 }
 

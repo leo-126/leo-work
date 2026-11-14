@@ -1,6 +1,7 @@
 """Convert an Excel UTF-8 CSV export into data/works.json."""
 import argparse
 import csv
+import io
 import json
 import re
 from pathlib import Path
@@ -12,7 +13,7 @@ REQUIRED = (
     "platform1", "link1", "platform2", "link2", "description",
 )
 FIELDS = REQUIRED[:8] + ("description",)
-OPTIONAL = ("duration", "cover", "heroTitle", "localVideo")
+OPTIONAL = ("duration", "cover", "heroTitle", "region", "genre", "episodes", "releaseDate", "episodeDuration")
 BVID = re.compile(r"(?<![A-Za-z0-9])BV[A-Za-z0-9]{10}(?![A-Za-z0-9])")
 
 
@@ -28,10 +29,15 @@ def extract_bvid(link):
 def convert(input_path):
     works = []
     ids = set()
-    with input_path.open(encoding="utf-8-sig", newline="") as source:
+    raw = input_path.read_bytes()
+    try:
+        content = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        content = raw.decode("gb18030")
+    with io.StringIO(content, newline="") as source:
         reader = csv.DictReader(source)
         reader.fieldnames = [name.strip() for name in (reader.fieldnames or [])]
-        missing = [name for name in REQUIRED if name not in reader.fieldnames]
+        missing = [name for name in ("id", "title", "poster") if name not in reader.fieldnames]
         if missing:
             raise ValueError("缺少 CSV 表头：" + ", ".join(missing))
         slots = sorted(
@@ -46,17 +52,25 @@ def convert(input_path):
             values = {key: (value or "").strip() for key, value in row.items()}
             if not any(values.values()):
                 continue
-            work = {key: values[key] for key in FIELDS}
+            work = {key: values.get(key, "") for key in FIELDS}
             if not work["id"] or not work["title"] or work["id"] in ids:
                 raise ValueError(f"第 {reader.line_num} 行需要唯一的 id 和非空 title。")
             ids.add(work["id"])
             work.update({key: values[key] for key in OPTIONAL if values.get(key)})
+            for key in ("cover", "poster"):
+                path = work.get(key, "")
+                if path and "/" not in path and "\\" not in path:
+                    work[key] = "../images/" + path
             sources = []
             for slot in slots:
                 platform = values.get(f"platform{slot}")
                 link = values.get(f"link{slot}")
                 if not platform or not link:
                     continue
+                match = re.search(r"https?://[^\s<>]+", link)
+                if not match:
+                    continue
+                link = match.group().rstrip("，。；）】~")
                 entry = {"platform": platform, "link": link}
                 bvid = extract_bvid(link)
                 if bvid:

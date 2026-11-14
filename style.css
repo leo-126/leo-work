@@ -96,3 +96,14 @@ video.player { object-fit: contain; }
 }
 @media (prefers-reduced-motion: reduce) { .card-cover img { transition: none; } }
 
+
+.detail-year { font-size: clamp(20px, 3vw, 30px); color: var(--muted); margin: 0 0 18px; }
+.detail-meta { color: var(--muted); line-height: 1.9; font-size: clamp(14px, 2vw, 18px); margin: 0; overflow-wrap: anywhere; }
+.detail-info { padding: clamp(16px, 3vw, 30px); border-radius: 20px; background: #e5ece3; }
+.poster img { object-fit: contain; }
+.playback, .synopsis { margin-top: 32px; }
+.playback h2, .synopsis h2 { font-size: 21px; }
+.player-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.player-tabs button { padding: 8px 18px; border: 1px solid var(--line); border-radius: 20px; background: white; color: var(--green); }
+.player-tabs button[aria-pressed="true"] { background: var(--green); color: white; }
+.playback .player { margin-bottom: 12px; }
