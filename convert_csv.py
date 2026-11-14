@@ -57,10 +57,17 @@ def convert(input_path):
                 raise ValueError(f"第 {reader.line_num} 行需要唯一的 id 和非空 title。")
             ids.add(work["id"])
             work.update({key: values[key] for key in OPTIONAL if values.get(key)})
+            for source, target in {"首播": "releaseDate", "单集片长": "episodeDuration", "角色": "role", "豆瓣评分": "rating"}.items():
+                if values.get(source) and values[source] != "/":
+                    work[target] = values[source]
             for key in ("cover", "poster"):
                 path = work.get(key, "")
                 if path and "/" not in path and "\\" not in path:
-                    work[key] = "../images/" + path
+                    folder = ROOT / "images" / "电视剧"
+                    candidate = folder / path
+                    if not candidate.exists() and "在暴雪时分" in path:
+                        candidate = folder / path.replace("在暴雪时分", "在暴雪十分")
+                    work[key] = "../images/电视剧/" + candidate.name if candidate.exists() else "../images/" + path
             sources = []
             for slot in slots:
                 platform = values.get(f"platform{slot}")
@@ -85,10 +92,27 @@ def convert(input_path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", nargs="?", type=Path, default=ROOT / "works.csv")
+    parser.add_argument("--television", action="store_true", help="更新电视剧并从时间历程.csv生成时间历程，保留其他分类")
     parser.add_argument("--output", type=Path, default=ROOT / "data" / "works.json")
     args = parser.parse_args()
     try:
         works = convert(args.input)
+        if args.television:
+            existing = json.loads(args.output.read_text(encoding="utf-8")) if args.output.exists() else []
+            works = [item for item in existing if item.get("type") != "电视剧"] + works
+            timeline_path = ROOT / "时间历程.csv"
+            raw = timeline_path.read_bytes()
+            try:
+                content = raw.decode("utf-8-sig")
+            except UnicodeDecodeError:
+                content = raw.decode("gb18030")
+            timeline = [
+                {"title": row["title"].strip(), "year": row["year"].strip(), "role": (row.get("角色") or "").strip(), "link": (row.get("链接") or "").strip()}
+                for row in csv.DictReader(io.StringIO(content))
+                if (row.get("title") or "").strip()
+            ]
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            (args.output.parent / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False, indent=2), encoding="utf-8")
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(works, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     except (OSError, ValueError, csv.Error) as error:

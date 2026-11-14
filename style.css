@@ -107,3 +107,40 @@ video.player { object-fit: contain; }
 .player-tabs button { padding: 8px 18px; border: 1px solid var(--line); border-radius: 20px; background: white; color: var(--green); }
 .player-tabs button[aria-pressed="true"] { background: var(--green); color: white; }
 .playback .player { margin-bottom: 12px; }
+
+.television-page .hero-link { height: clamp(310px, 38vw, 430px); }
+.television-page .hero-title { font-size: clamp(30px, 4.5vw, 54px); }
+.section-title h2 { font-size: clamp(23px, 3vw, 30px); margin: 0; letter-spacing: -.04em; }
+.poster-rail { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 100px) / 6); gap: 20px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #9cae98 transparent; }
+.portrait-card { min-width: 0; scroll-snap-align: start; }
+.portrait-image { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 12px; background: #dce4d7; }
+.portrait-image img { transition: transform .2s; }
+.portrait-card:hover img { transform: scale(1.04); }
+.portrait-card h3 { font-size: 16px; margin: 11px 0 5px; }
+.portrait-card p { color: var(--muted); font-size: 13px; margin: 0; }
+.portrait-image .badge { right: 7px; top: 7px; padding: 4px 7px; font-size: 11px; }
+.rating { position: absolute; bottom: 8px; right: 8px; padding: 3px 7px; background: #18231dcc; color: #ffe4a2; border-radius: 6px; font-size: 18px; font-weight: 800; }
+.timeline-section { margin-top: 32px; padding: 1px 28px 28px; background: #e9eee4; border: 1px solid #dbe3d5; border-radius: 18px; }
+.timeline-section .section-title { margin-top: 25px; flex-wrap: wrap; }
+.year-tabs { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 16px; scrollbar-width: thin; }
+.year-tabs button { flex: 0 0 auto; border: 1px solid #cbd8c5; background: transparent; color: var(--muted); border-radius: 24px; padding: 8px 16px; }
+.year-tabs button[aria-pressed="true"] { background: var(--green); color: white; border-color: var(--green); }
+.year-content { display: grid; grid-template-columns: 150px 1fr; gap: 30px; border-top: 1px solid #ced9c7; padding-top: 24px; }
+.year-label strong { display: block; font-size: 48px; letter-spacing: -.06em; color: var(--green); line-height: 1.1; }
+.year-label span { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.year-works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.year-work { display: flex; flex-direction: column; gap: 7px; border-left: 2px solid #97b187; padding: 10px 15px; }
+.year-work span { font-size: 13px; color: var(--muted); }
+.year-work .year-arrow { color: var(--green); }
+a.year-work:hover { background: #ffffff88; border-radius: 0 8px 8px 0; }
+.detail-role { color: var(--green); font-weight: 700; }
+@media (max-width: 680px) {
+ .poster-rail { grid-auto-columns: 42%; gap: 12px; }
+ .television-page .hero-link { height: 280px; }
+ .television-extras > .section-title { flex-wrap: wrap; gap: 7px; }
+ .timeline-section { padding: 1px 15px 20px; }
+ .year-content { grid-template-columns: 1fr; gap: 18px; }
+ .year-label { display: flex; align-items: baseline; gap: 15px; }
+ .year-label strong { font-size: 36px; }
+ .year-works { grid-template-columns: 1fr; }
+}
