@@ -12,6 +12,7 @@ const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
 let works = [];
+let worksLoaded = false;
 let timeline = [];
 let selectedYear;
 let featured = [];
@@ -67,9 +68,7 @@ function renderSlide() {
   link.append(artwork(work.cover || work.poster, false, true));
   if (work.badge) link.append(badge(work.badge));
   const caption = el("span", "hero-caption");
-  if (work.id !== "golden-rooster-39") {
   caption.append(el("span", "hero-meta", [work.type, work.episodeInfo].filter(Boolean).join(" · ")));
-}
   caption.append(el("strong", "hero-title", work.heroTitle || work.title));
   if (work.subtitle) caption.append(el("span", "hero-subtitle", work.subtitle));
   link.append(caption);
@@ -285,12 +284,23 @@ function route() {
   try { value = decodeURIComponent(encoded); } catch { value = ""; }
   const work = page === "work" && works.find((item) => item.id === value);
   const category = page === "category" && categories.includes(value) ? value : "首页";
-  const activeRoute = work ? returnPoint?.route || "#home" : homeRoute(category);
+  const isDiary = page === "diary";
+  const activeRoute = isDiary ? "#diary" : work ? returnPoint?.route || "#home" : homeRoute(category);
   for (const link of get("categories").children) {
     if (link.hash === activeRoute) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
-  if (work) {
+  get("diary").hidden = !isDiary;
+  get("status").hidden = isDiary || worksLoaded;
+  if (isDiary) {
+    home.hidden = true;
+    detail.hidden = true;
+    detail.replaceChildren();
+    document.title = "日记 · 吴磊作品集";
+    get("diary-title").focus({ preventScroll: true });
+    window.scrollTo(0, 0);
+    loadDiary();
+  } else if (work) {
     showDetail(work);
     document.title = work.title + " · 吴磊作品集";
     window.scrollTo(0, 0);
@@ -355,6 +365,12 @@ async function init() {
     link.href = homeRoute(category);
     get("categories").append(link);
   }
+  const diaryLink = el("a", "", "日记");
+  diaryLink.href = "#diary";
+  get("categories").append(diaryLink);
+  history.scrollRestoration = "manual";
+  window.addEventListener("hashchange", route);
+  if (location.hash === "#diary") route();
   try {
     const response = await fetch(dataUrl);
     if (!response.ok) throw new Error("HTTP " + response.status);
@@ -362,13 +378,12 @@ async function init() {
     if (!Array.isArray(works)) throw new Error("作品数据需要是数组");
     const timelineResponse = await fetch(new URL("timeline.json", dataUrl));
     if (timelineResponse.ok) timeline = await timelineResponse.json();
+    worksLoaded = true;
     get("status").hidden = true;
-    history.scrollRestoration = "manual";
-    window.addEventListener("hashchange", route);
-    route();
+    if (location.hash !== "#diary") route();
   } catch (error) {
     console.error(error);
-    get("status").hidden = false;
+    get("status").hidden = location.hash === "#diary";
     get("status").textContent = location.protocol === "file:"
       ? "请通过本地 HTTP 服务器打开页面，以便读取作品数据。"
       : "作品数据载入失败，请检查 data/works.json 后刷新页面。";

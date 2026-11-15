@@ -6,6 +6,7 @@
   <meta name="description" content="浏览吴磊的作品与影像，查看简介和播放来源。">
   <title>吴磊 · 作品集</title>
   <link rel="stylesheet" href="style.css">
+  <script src="diary.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -32,6 +33,11 @@
       </section>
     </div>
     <article id="detail" hidden></article>
+    <section id="diary" aria-labelledby="diary-title" hidden>
+      <div class="section-title"><h1 id="diary-title" tabindex="-1">日记</h1></div>
+      <p id="diary-status" role="status" hidden></p>
+      <ol id="diary-entries" class="diary-entries"></ol>
+    </section>
   </main>
 </body>
 </html>
