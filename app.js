@@ -1,5 +1,6 @@
 // 导航名称和电视剧页面文案可在这里修改。
 const categories = ["首页", "电视剧", "电影", "Vlog", "综艺", "时刻"];
+const homeRecommendations = ["cycling-hainan-ep01", "golden-rooster-39", "qun-xing-shan-yao-shi", "jianlai"];
 const televisionCopy = {
   featuredTitle: "精选剧集",
   featuredSubtitle: "光影之间，遇见不同人生",
@@ -156,6 +157,33 @@ function renderTelevision(visible) {
   home.append(history);
 }
 
+function renderHomeSections(recommendations) {
+  const featuredIds = new Set(recommendations.map(work => work.id));
+  const sections = [["推荐", recommendations], ...categories.slice(1).map(category => {
+    const all = works.filter(work => work.type === category);
+    const remaining = all.filter(work => !featuredIds.has(work.id));
+    return [category, (remaining.length ? remaining : all).slice(0, 4)];
+  })];
+  get("home-sections").replaceChildren(...sections.map(([category, items], index) => {
+    const section = el("section", "home-section");
+    const heading = el("div", "section-title home-section-title");
+    const title = el(index === 0 ? "h1" : "h2", "", category);
+    title.id = "home-section-title-" + index;
+    section.setAttribute("aria-labelledby", title.id);
+    heading.append(title);
+    if (index !== 0) {
+      const more = el("a", "section-more", "点击查看更多 »");
+      more.href = homeRoute(category);
+      more.setAttribute("aria-label", "点击查看更多" + category);
+      heading.append(more);
+    }
+    const grid = el("div", "grid");
+    grid.append(...(items.length ? items.map(makeCard) : [el("p", "empty-results", "暂未收录作品。")]));
+    section.append(heading, grid);
+    return section;
+  }));
+}
+
 function showHome(category, query = "") {
   get("television-extras")?.remove();
   get("television-timeline")?.remove();
@@ -170,7 +198,10 @@ function showHome(category, query = "") {
   const visible = query ? works.filter((work) => [work.title, work.heroTitle]
     .some((title) => title && normalize(title).includes(normalize(query))))
     : category === "首页" ? works : works.filter((work) => work.type === category);
-  const nextFeatured = query ? [] : visible.slice(0, 4);
+  const overview = !query && category === "首页";
+  const nextFeatured = query ? [] : overview
+    ? homeRecommendations.map(id => works.find(work => work.id === id)).filter(Boolean)
+    : visible.slice(0, 4);
   if (nextFeatured.map((item) => item.id).join() !== featured.map((item) => item.id).join()) slideIndex = 0;
   featured = nextFeatured;
   get("dots").replaceChildren(...featured.map((work, index) => {
@@ -183,6 +214,14 @@ function showHome(category, query = "") {
   document.querySelector(".hero-controls").hidden = featured.length < 2;
   get("dots").hidden = featured.length < 2;
   renderSlide();
+  get("home-sections").hidden = !overview;
+  get("work-list").hidden = overview;
+  if (overview) {
+    renderHomeSections(nextFeatured);
+    get("grid").replaceChildren();
+    return;
+  }
+  get("home-sections").replaceChildren();
   if (!query && category === "电视剧") renderTelevision(visible);
   get("list-title").textContent = query ? "搜索结果：「" + query + "」"
     : category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
@@ -236,6 +275,12 @@ function renderPlayback(work, compact = false) {
     } catch { /* Invalid sources are omitted from the player. */ }
   }
   const playback = el("section", "playback");
+  const weibo = sources.find(source => {
+    try {
+      const url = new URL(source.link);
+      return /^https?:$/.test(url.protocol) && /(^|\.)weibo\.(com|cn)$/.test(url.hostname);
+    } catch { return false; }
+  });
   if (!compact) playback.append(el("h2", "", "在线观看"));
   if (embeds.length) {
     const iframe = el("iframe", "player");
@@ -254,6 +299,13 @@ function renderPlayback(work, compact = false) {
       buttons.append(button);
     });
     playback.append(iframe);
+    if (weibo) {
+      const link = el("a", "weibo-hd", "打开微博视频看高清 ↗");
+      link.href = weibo.link;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      playback.append(link);
+    }
     if (embeds.length > 1) playback.append(buttons);
     playback.append(el("p", "muted", "如播放器无法加载，可通过下方片源链接观看。"));
     selectEmbed(0);

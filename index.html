@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="浏览吴磊的作品与影像，查看简介和播放来源。">
   <title>吴磊 · 作品集</title>
-  <link rel="stylesheet" href="style.css?v=2">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -30,7 +30,8 @@
         </div>
         <div id="dots" class="dots" aria-label="选择精选作品"></div>
       </section>
-      <section aria-labelledby="list-title">
+      <div id="home-sections" hidden></div>
+      <section id="work-list" aria-labelledby="list-title">
         <div class="section-title"><h1 id="list-title" tabindex="-1">全部作品</h1><span id="work-count"></span></div>
         <div id="grid" class="grid"></div>
       </section>
