@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="浏览吴磊的作品与影像，查看简介和播放来源。">
   <title>吴磊 · 作品集</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=2">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="shell header-inner">
       <a class="brand" href="#home"><span>LEO<span class="brand-dot">.</span></span><small>吴磊作品集</small></a>
       <nav id="categories" aria-label="作品分类"></nav>
+      <form id="work-search" class="work-search" role="search">
+        <input id="search-title" type="search" aria-label="按作品标题搜索" required>
+        <button type="submit">搜索</button>
+      </form>
     </div>
   </header>
   <main class="shell main">

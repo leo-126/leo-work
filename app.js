@@ -7,7 +7,7 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json", document.baseURI);
+const dataUrl = new URL("data/works.json?v=2", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -58,6 +58,10 @@ function badge(label) {
   return el("span", "badge" + tone, label);
 }
 
+function coverLabel(work) {
+  return work.type === "Vlog" ? work.releaseDate : work.episodeInfo;
+}
+
 function renderSlide() {
   const work = featured[slideIndex];
   carousel.hidden = !work;
@@ -67,7 +71,7 @@ function renderSlide() {
   link.append(artwork(work.cover || work.poster, false, true));
   if (work.badge) link.append(badge(work.badge));
   const caption = el("span", "hero-caption");
-  caption.append(el("span", "hero-meta", [work.type, work.episodeInfo].filter(Boolean).join(" · ")));
+  caption.append(el("span", "hero-meta", [work.type, coverLabel(work)].filter(Boolean).join(" · ")));
   caption.append(el("strong", "hero-title", work.heroTitle || work.title));
   if (work.subtitle) caption.append(el("span", "hero-subtitle", work.subtitle));
   link.append(caption);
@@ -90,7 +94,8 @@ function makeCard(work) {
   const cover = el("span", "card-cover");
   cover.append(artwork(work.cover || work.poster, true));
   if (work.badge) cover.append(badge(work.badge));
-  if (work.episodeInfo) cover.append(el("span", "episode", work.episodeInfo));
+  const label = coverLabel(work);
+  if (label) cover.append(el("span", "episode", label));
   card.append(cover, el("h2", "", work.title), el("p", "", [work.role ? "饰 " + work.role : "", work.subtitle].filter(Boolean).join(" · ")));
   return card;
 }
@@ -151,15 +156,21 @@ function renderTelevision(visible) {
   home.append(history);
 }
 
-function showHome(category) {
+function showHome(category, query = "") {
   get("television-extras")?.remove();
   get("television-timeline")?.remove();
   home.classList.toggle("television-page", category === "电视剧");
   detail.replaceChildren();
   detail.hidden = true;
   home.hidden = false;
-  const visible = category === "首页" ? works : works.filter((work) => work.type === category);
-  const nextFeatured = visible.slice(0, 4);
+  const normalize = (value) => {
+    const text = value.normalize("NFKC").toLowerCase();
+    return text.replace(/[\s·・\-—]/g, "") || text;
+  };
+  const visible = query ? works.filter((work) => [work.title, work.heroTitle]
+    .some((title) => title && normalize(title).includes(normalize(query))))
+    : category === "首页" ? works : works.filter((work) => work.type === category);
+  const nextFeatured = query ? [] : visible.slice(0, 4);
   if (nextFeatured.map((item) => item.id).join() !== featured.map((item) => item.id).join()) slideIndex = 0;
   featured = nextFeatured;
   get("dots").replaceChildren(...featured.map((work, index) => {
@@ -172,10 +183,13 @@ function showHome(category) {
   document.querySelector(".hero-controls").hidden = featured.length < 2;
   get("dots").hidden = featured.length < 2;
   renderSlide();
-  if (category === "电视剧") renderTelevision(visible);
-  get("list-title").textContent = category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
-  get("work-count").textContent = visible.length + " 部";
-  get("grid").replaceChildren(...(visible.length ? visible.map(makeCard) : [el("p", "muted", "这个分类暂时还没有作品。")]));
+  if (!query && category === "电视剧") renderTelevision(visible);
+  get("list-title").textContent = query ? "搜索结果：「" + query + "」"
+    : category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
+  get("work-count").textContent = visible.length + (category === "Vlog" && !query ? " 个" : " 部");
+  get("grid").replaceChildren(...(visible.length ? visible.map(makeCard) : [
+    el("p", "empty-results", query ? "没有找到匹配的作品，试试其他关键词。" : "这个分类暂时还没有作品。")
+  ]));
 }
 
 function externalSource(source) {
@@ -197,25 +211,22 @@ function externalSource(source) {
   }
 }
 
-function showDetail(work) {
-  home.hidden = true;
-  detail.hidden = false;
-  const back = el("a", "back", "← 返回作品");
-  back.href = returnPoint?.route || "#home";
-  back.addEventListener("click", (event) => {
-    if (!returnPoint) return;
-    event.preventDefault();
-    history.back();
-  });
-  detail.replaceChildren(back);
+function renderPlayback(work, compact = false) {
   const sources = work.playSources || [];
   const embeds = [];
-  const bvid = [work.bvid, ...sources.map(source => source.bvid || source.link?.match(/BV[A-Za-z0-9]{10}/)?.[0])]
+  const bvid = [work.bvid, ...sources.map(source => source.bvid ||
+    (source.platform === "B站" && source.link?.match(/BV[A-Za-z0-9]{10}/)?.[0]))]
     .find(id => /^BV[A-Za-z0-9]{10}$/.test(id || ""));
   if (bvid) embeds.push({ platform: "B站", url: "https://player.bilibili.com/player.html?bvid=" + bvid + "&autoplay=0" });
   for (const source of sources) {
     try {
       const url = new URL(source.link);
+      if (/(^|\.)weibo\.com$/.test(url.hostname)) {
+        const fid = url.searchParams.get("fid") || url.pathname.match(/\/show\/(1034:\d+)\/?$/)?.[1];
+        if (/^1034:\d+$/.test(fid || "")) embeds.push({
+          platform: "微博", url: "https://video.weibo.com/show?fid=" + encodeURIComponent(fid)
+        });
+      }
       if (url.hostname === "v.qq.com" || url.hostname.endsWith(".v.qq.com")) {
         const vid = url.searchParams.get("vid") || url.pathname.match(/\/([a-zA-Z0-9]{11})\.html$/)?.[1];
         if (vid && /^[a-zA-Z0-9]{11}$/.test(vid)) embeds.push({
@@ -225,8 +236,8 @@ function showDetail(work) {
     } catch { /* Invalid sources are omitted from the player. */ }
   }
   const playback = el("section", "playback");
+  if (!compact) playback.append(el("h2", "", "在线观看"));
   if (embeds.length) {
-    playback.append(el("h2", "", "在线观看"));
     const iframe = el("iframe", "player");
     iframe.allowFullscreen = true;
     iframe.allow = "fullscreen; picture-in-picture; encrypted-media";
@@ -242,9 +253,80 @@ function showDetail(work) {
       button.addEventListener("click", () => selectEmbed(index));
       buttons.append(button);
     });
-    playback.append(buttons, iframe, el("p", "muted", "如播放器无法加载，可通过下方片源链接观看。"));
+    playback.append(iframe);
+    if (embeds.length > 1) playback.append(buttons);
+    playback.append(el("p", "muted", "如播放器无法加载，可通过下方片源链接观看。"));
     selectEmbed(0);
+  } else if (compact) {
+    const poster = el("div", "player player-placeholder");
+    poster.append(artwork(work.cover), el("span", "", "请通过下方片源观看"));
+    playback.append(poster);
   }
+  return embeds.length || compact ? playback : null;
+}
+
+function renderSources(sources, heading = "可播放片源") {
+  const section = el("section", "sources");
+  const rows = sources.map(externalSource).filter(Boolean);
+  section.append(el("h2", "", heading));
+  if (rows.length) {
+    const list = el("ul");
+    list.append(...rows);
+    section.append(list);
+  } else section.append(el("p", "muted", "暂无外部片源。"));
+  return section;
+}
+
+function showVlog(work) {
+  const episodes = Array.isArray(work.episodes) && work.episodes.length ? work.episodes
+    : [{ title: work.subtitle || work.title, playSources: work.playSources || [], bvid: work.bvid }];
+  const screen = el("div", "vlog-screen");
+  const panel = el("section", "vlog-panel");
+  const tabs = el("div", "episode-tabs");
+  const current = el("p", "current-episode");
+  const links = el("div");
+  tabs.setAttribute("role", "group");
+  tabs.setAttribute("aria-label", "选择期数");
+  function select(index) {
+    const episode = episodes[index];
+    const title = episode.title || "第 " + (index + 1) + " 期";
+    screen.replaceChildren(renderPlayback({ ...episode, title: work.title + " · " + title, cover: work.cover }, true));
+    current.textContent = title;
+    [...tabs.children].forEach((tab, i) => tab.setAttribute("aria-pressed", String(i === index)));
+    links.replaceChildren(renderSources(episode.playSources || [], "本期播放链接"));
+  }
+  episodes.forEach((episode, index) => {
+    const button = el("button", "", "第 " + (index + 1) + " 期");
+    button.type = "button";
+    button.title = episode.title || "";
+    button.addEventListener("click", () => select(index));
+    tabs.append(button);
+  });
+  panel.append(el("p", "vlog-label", [work.genre || "Vlog", work.year].filter(Boolean).join(" · ")),
+    el("h1", "", work.title), tabs, current, links);
+  detail.append(screen, panel);
+  select(0);
+}
+
+function showDetail(work) {
+  home.hidden = true;
+  detail.hidden = false;
+  const vlog = work.type === "Vlog";
+  detail.classList.toggle("vlog-view", vlog);
+  const back = el("a", "back", "← 返回作品");
+  back.href = returnPoint?.route || (vlog ? homeRoute("Vlog") : "#home");
+  back.addEventListener("click", (event) => {
+    if (!returnPoint || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    history.back();
+  });
+  detail.replaceChildren(back);
+  if (vlog) {
+    showVlog(work);
+    back.focus({ preventScroll: true });
+    return;
+  }
+  const playback = renderPlayback(work);
 
   const info = el("div", "detail-info");
   const poster = el("div", "poster");
@@ -260,19 +342,11 @@ function showDetail(work) {
   copy.append(el("p", "detail-meta", [work.region, work.genre || work.type, work.releaseDate || work.year, episodes, durationText].filter(Boolean).join(" / ")));
   if (work.role) copy.append(el("p", "detail-role", "吴磊 饰 " + work.role));
   info.append(poster, copy);
-  const section = el("section", "sources");
-  const rows = sources.map(externalSource).filter(Boolean);
-  section.append(el("h2", "", "可播放片源"));
-  if (rows.length) {
-    const list = el("ul");
-    list.append(...rows);
-    section.append(list);
-  } else section.append(el("p", "muted", "暂无外部片源。"));
   const synopsis = el("section", "synopsis");
   synopsis.append(el("h2", "", "简介"), el("p", "description", work.description || "暂无简介。"));
   detail.append(info);
-  if (embeds.length) detail.append(playback);
-  detail.append(section, synopsis);
+  if (playback) detail.append(playback);
+  detail.append(renderSources(work.playSources || []), synopsis);
   back.focus({ preventScroll: true });
 }
 
@@ -283,7 +357,10 @@ function route() {
   try { value = decodeURIComponent(encoded); } catch { value = ""; }
   const work = page === "work" && works.find((item) => item.id === value);
   const category = page === "category" && categories.includes(value) ? value : "首页";
-  const activeRoute = work ? returnPoint?.route || "#home" : homeRoute(category);
+  const query = page === "search" ? value.trim() : "";
+  const activeRoute = work ? returnPoint?.route || homeRoute(work.type === "Vlog" ? "Vlog" : "首页")
+    : query ? hash : homeRoute(category);
+  if (!work) get("search-title").value = query;
   for (const link of get("categories").children) {
     if (link.hash === activeRoute) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
@@ -293,18 +370,25 @@ function route() {
     document.title = work.title + " · 吴磊作品集";
     window.scrollTo(0, 0);
   } else {
-    showHome(category);
+    showHome(category, query);
     document.title = "吴磊 · 作品集";
     if (restoring && returnPoint?.route === activeRoute) {
       [...home.querySelectorAll("a")].find((link) => link.hash === returnPoint.work)?.focus({ preventScroll: true });
       window.scrollTo(0, returnPoint.scroll);
     } else {
       window.scrollTo(0, 0);
+      if (query) get("list-title").focus({ preventScroll: true });
     }
     returnPoint = undefined;
   }
   restoring = Boolean(work);
 }
+
+get("work-search").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const query = get("search-title").value.trim();
+  location.hash = query ? "#search/" + encodeURIComponent(query) : "#home";
+});
 
 get("prev").addEventListener("click", () => changeSlide(slideIndex - 1));
 get("next").addEventListener("click", () => changeSlide(slideIndex + 1));
