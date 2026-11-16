@@ -275,12 +275,6 @@ function renderPlayback(work, compact = false) {
     } catch { /* Invalid sources are omitted from the player. */ }
   }
   const playback = el("section", "playback");
-  const weibo = sources.find(source => {
-    try {
-      const url = new URL(source.link);
-      return /^https?:$/.test(url.protocol) && /(^|\.)weibo\.(com|cn)$/.test(url.hostname);
-    } catch { return false; }
-  });
   if (!compact) playback.append(el("h2", "", "在线观看"));
   if (embeds.length) {
     const iframe = el("iframe", "player");
@@ -288,6 +282,7 @@ function renderPlayback(work, compact = false) {
     iframe.allow = "fullscreen; picture-in-picture; encrypted-media";
     const buttons = el("div", "player-tabs");
     function selectEmbed(index) {
+      iframe.classList.toggle("player-weibo", embeds[index].platform === "微博");
       iframe.title = work.title + " · " + embeds[index].platform;
       iframe.src = embeds[index].url;
       [...buttons.children].forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
@@ -299,13 +294,6 @@ function renderPlayback(work, compact = false) {
       buttons.append(button);
     });
     playback.append(iframe);
-    if (weibo) {
-      const link = el("a", "weibo-hd", "打开微博视频看高清 ↗");
-      link.href = weibo.link;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      playback.append(link);
-    }
     if (embeds.length > 1) playback.append(buttons);
     playback.append(el("p", "muted", "如播放器无法加载，可通过下方片源链接观看。"));
     selectEmbed(0);
