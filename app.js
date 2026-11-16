@@ -107,7 +107,10 @@ function renderTelevision(visible) {
   const heading = el("div", "section-title");
   heading.append(el("h2", "", televisionCopy.featuredTitle), el("span", "muted", televisionCopy.featuredSubtitle));
   const rail = el("div", "poster-rail");
-  visible.slice(0, 8).forEach((work, index) => {
+  visible
+    .filter(work => Number(work.rating) > 0 && Number(work.rating) <= 10)
+    .sort((a, b) => Number(b.rating) - Number(a.rating))
+    .slice(0, 8).forEach((work, index) => {
     const card = el("a", "portrait-card");
     card.href = workRoute(work);
     const image = el("div", "portrait-image");
