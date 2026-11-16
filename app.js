@@ -136,7 +136,7 @@ function renderTimeline(visible, category) {
   const history = el("section", "timeline-section");
   history.id = "television-timeline";
   const title = el("div", "section-title");
-  title.append(el("h2", "", movie ? "每一步都算数" : televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
+  title.append(el("h2", "", movie ? "百年影人进行时" : televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
   const years = [...new Set(entries.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
   let selectedYear = timelineYears.get(category);
   if (!years.includes(selectedYear)) selectedYear = years[0];
