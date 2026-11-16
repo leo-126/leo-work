@@ -56,6 +56,10 @@ nav a[aria-current] { color: white; background: var(--green); }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
 .home-section + .home-section { margin-top: clamp(24px, 4vw, 46px); }
 .home-section-title { justify-content: space-between; }
+@media (min-width: 941px) {
+  .home-section .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+  .home-section .card h2 { font-size: clamp(16px, 1.6vw, 20px); }
+}
 .section-more { color: var(--green); font-weight: 700; font-size: 14px; }
 .section-more { flex: none; padding-block: 7px; }
 .section-more:hover { text-decoration: underline; }
@@ -137,7 +141,8 @@ video.player { object-fit: contain; }
 
 @media (max-width: 940px) {
   .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 10px; row-gap: 0; padding-top: 8px; }
-  .header-inner nav { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: 0; overflow-x: auto; padding-block: 7px; }
+  .header-inner nav { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; padding-block: 7px; text-align: center; }
+  .header-inner nav a { justify-self: center; }
   .work-search { grid-row: 1; grid-column: 2; width: clamp(146px, 35vw, 255px); }
 }
 @media (max-width: 380px) {

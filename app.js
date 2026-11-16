@@ -1,5 +1,5 @@
 // 导航名称和电视剧页面文案可在这里修改。
-const categories = ["首页", "电视剧", "电影", "Vlog", "综艺", "时刻"];
+const categories = ["首页", "电视剧", "电影", "Vlog", "时刻"];
 const homeRecommendations = ["cycling-hainan-ep01", "golden-rooster-39", "qun-xing-shan-yao-shi", "jianlai"];
 const televisionCopy = {
   featuredTitle: "精选剧集",
@@ -8,7 +8,7 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=3", document.baseURI);
+const dataUrl = new URL("data/works.json?v=4", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -43,6 +43,9 @@ function artwork(path, lazy = false, priority = false) {
   if (priority) img.fetchPriority = "high";
   if (path) {
     const original = new URL(path, dataUrl);
+    if (original.origin === location.origin && decodeURIComponent(original.pathname).includes("/images/电影/")) {
+      original.searchParams.set("v", "2");
+    }
     const optimized = new URL(original);
     if (optimized.origin === location.origin) optimized.pathname = optimized.pathname.replace(/\.(jpe?g|png)$/i, ".webp");
     img.src = optimized.href;
