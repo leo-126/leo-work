@@ -4,7 +4,7 @@
     "title": "骑有此理-海南篇",
     "type": "Vlog",
     "year": "2026",
-    "releaseDate": "2026/11/05",
+    "releaseDate": "2026/11/15",
     "genre": "骑有此理",
     "cover": "../images/vlog/海南.webp",
     "subtitle": "物理意义上烫烫的一集",
@@ -60,9 +60,303 @@
     "id": "qun-xing-shan-yao-shi",
     "title": "群星闪耀时",
     "type": "电影",
-    "cover": "../images/电影/群星闪耀时-1.jpg",
-    "poster": "../images/电影/群星闪耀时-2.jpg",
+    "year": "2024",
+    "releaseDate": "2026-07-25(中国大陆) / 2026-06-20(上海国际电影节)",
+    "region": "中国大陆",
+    "genre": "剧情/科幻",
+    "duration": "131分钟 / 129分钟(电影节版)",
+    "rating": "7.4",
+    "role": "赵吉虎",
+    "description": "2035年，三名中国航天员在返回地球途中突遇险情，与地面指挥中心彻底失去联系。就在希望破灭的绝境中，意外收到一条来自1970的神秘信号，他们该如何求救？隔着65年的科技鸿沟，过去能否拯救未来……",
+    "cover": "../images/电影/群星闪耀时-1.webp",
+    "poster": "../images/电影/群星闪耀时-2.webp",
+    "subtitle": "第39届金鸡最佳男主角提名",
+    "badge": "待映",
     "playSources": []
+  },
+  {
+    "id": "Dwelling by the West Lake",
+    "title": "草木人间",
+    "type": "电影",
+    "year": "2022",
+    "releaseDate": "2024-04-03(中国大陆) / 2023-10-28(东京国际电影节)",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "duration": "118分钟",
+    "rating": "6.0",
+    "role": "何目莲",
+    "description": "苔花被骗入传销组织“蝴蝶国际”，摇身一变，从衣着打扮到言行举止都宛如“新生”，疯癫的举动让目莲感到诧异。目莲想尽一切办法奋力解救，风波看似平息，母子却陷入了更绝望的境地……这座人间炼狱究竟该怎样逃脱？现代版“目连救母”能否成功？",
+    "cover": "../images/电影/草木-1.webp",
+    "poster": "../images/电影/草木-2.webp",
+    "subtitle": "第36届东京国际电影节 主竞赛单元 最佳影片(提名)",
+    "badge": "防诈",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc002004vjtwff/h4100w5rhwm.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_17garb9g9fk.html"
+      }
+    ]
+  },
+  {
+    "id": "Upcoming Summer",
+    "title": "盛夏未来",
+    "type": "电影",
+    "year": "2020",
+    "releaseDate": "2021/7/30",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "duration": "115分钟",
+    "rating": "7.1",
+    "role": "郑宇星",
+    "description": "即将高考的陈辰因发现妈妈与王叔叔的“外遇”而心情低落，却在这时与校园网红郑宇星因为一个谎言意外相识。两人在未解的青春里，携手面对成长的种种难题，勇敢地面对真实的自己，亦在这个夏天过去后，见证了彼此的成长和蜕变……",
+    "cover": "../images/电影/盛夏-1.webp",
+    "poster": "../images/电影/盛夏-2.webp",
+    "subtitle": "郑宇星，你说未来什么时候来",
+    "badge": "青春",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200mc0iw1e/c0040tq98cd.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_13q46jpqhfk.html"
+      }
+    ]
+  },
+  {
+    "id": "My Country, My Parents",
+    "title": "我和我的父辈之乘风",
+    "type": "电影",
+    "year": "2021",
+    "releaseDate": "2021/9/30",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "duration": "156分钟",
+    "rating": "6.4",
+    "role": "马乘风",
+    "description": "以革命、建设、改革开放和新时代为历史坐标, 通过“家与国”的视角描写几代父辈的奋斗经历，讲述中国人的血脉相连和精神传承，再现中国人努力拼搏的时代记忆。",
+    "cover": "../images/电影/乘风-1.webp",
+    "poster": "../images/电影/乘风-2.webp",
+    "subtitle": "悲壮革命",
+    "badge": "爱国",
+    "playSources": [
+      {
+        "platform": "芒果TV",
+        "link": "https://www.mgtv.com/b/386365/15380241.html"
+      }
+    ]
+  },
+  {
+    "id": "Dongji Island / Dongji Rescue",
+    "title": "东极岛",
+    "type": "电影",
+    "year": "2024",
+    "releaseDate": "2025/8/8",
+    "region": "中国大陆",
+    "genre": "剧情/历史/战争",
+    "duration": "133分钟",
+    "rating": "",
+    "role": "阿荡",
+    "description": "二战期间，中国舟山附近海域，一艘载满英军战俘的日本货轮被击沉，上千名英军战俘被日军封锁于船舱内。绝境之时，东极岛上的一群渔民毅然前来。他们凭借骨子里的善良、野性与血性，在惊涛骇浪中，为落难的战俘打开一条生路。",
+    "cover": "../images/电影/东极岛-1.webp",
+    "poster": "../images/电影/东极岛-2.webp",
+    "subtitle": "历史战争",
+    "badge": "战争",
+    "playSources": []
+  },
+  {
+    "id": "Adoring",
+    "title": "宠爱",
+    "type": "电影",
+    "year": "2019",
+    "releaseDate": "2019/12/31",
+    "region": "中国大陆",
+    "genre": "剧情/喜剧 /爱情",
+    "duration": "108分钟",
+    "rating": "5.9",
+    "role": "陈乐云",
+    "description": "不同年龄段的人们，在宠物的陪伴和守护中，收获爱、发现爱，更重新学会爱。在“爱”的主线下，一系列关于亲情、友情、爱情的故事逐一展开。",
+    "cover": "../images/电影/宠爱-1.webp",
+    "poster": "../images/电影/宠爱-2.webp",
+    "subtitle": "击剑选手",
+    "badge": "宠物",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/48pcff4vgkx11kh/k00337k2xlu.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_19rsfjt0l4.html"
+      },
+      {
+        "platform": "优酷视频",
+        "link": "https://v.youku.com/v_show/id_XNDUxMDczMTk4NA==.html"
+      }
+    ]
+  },
+  {
+    "id": "All Ears",
+    "title": "不虚此行",
+    "type": "电影",
+    "year": "2022",
+    "releaseDate": "2023-09-09(中国大陆) / 2023-06-10(上海国际电影节)",
+    "region": "中国大陆",
+    "genre": "剧情",
+    "duration": "119分钟",
+    "rating": "7.0",
+    "role": "小尹",
+    "description": "人这一生怎样才算不虚此行？闻善在平衡自己与世界的关系中寻找着答案。他是一个“掉队”的普通编剧，一次偶然的机会让他改以撰写悼词为生。在与各色普通人的相遇里，闻善慰藉他人、也获得了温暖，最终找到了自己的人生方向。",
+    "cover": "../images/电影/不虚此行-1.webp",
+    "poster": "../images/电影/不虚此行-2.jpg",
+    "subtitle": "25届上海国际电影节 金爵奖 最佳影片(提名)",
+    "badge": "文艺",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200cexbp74/j00473im2fe.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_uhm6nyyaa4.html"
+      }
+    ]
+  },
+  {
+    "id": "Shadow",
+    "title": "影",
+    "type": "电影",
+    "year": "2017",
+    "releaseDate": "2018-09-30(中国大陆) / 2018-09-06(威尼斯电影节)",
+    "region": "中国大陆",
+    "genre": "剧情/动作/武侠/古装",
+    "duration": "116分钟",
+    "rating": "7.2",
+    "role": "杨平",
+    "description": "战乱年代，群雄并起。真假子虞切磋战法，寻求破解杨苍刀法的绝技。而另一方面，沛良恼怒子虞私自约战杨苍，不惜将妹妹青萍嫁于杨苍之子为妾媾和。淫雨霏霏，连日不开。境州上空，杀戮与机谋纠缠撕裂……",
+    "cover": "../images/电影/影-1.webp",
+    "poster": "../images/电影/影-2.webp",
+    "subtitle": "少年将军",
+    "badge": "武侠",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/co6hernchr5uql1/z0028awh5k0.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_19rrc1dawc.html"
+      },
+      {
+        "platform": "优酷视频",
+        "link": "https://v.youku.com/v_show/id_XMzk0MTM2Mjk0OA==.html"
+      }
+    ]
+  },
+  {
+    "id": "Papa",
+    "title": "学爸",
+    "type": "电影",
+    "year": "2021",
+    "releaseDate": "2023/8/18",
+    "region": "中国大陆",
+    "genre": "剧情/喜剧",
+    "duration": "118分钟",
+    "rating": "5.9",
+    "role": "中介小王",
+    "description": "雷大力为了让儿子雷小米能够拥有更高的人生起点，在单亲妈妈刘真真的带领下，被迫卷入了“幼升小”的激烈角逐。面对残酷的现实，父子的生活困境应该如何破局？几组家庭又将做出怎样的人生抉择？",
+    "cover": "../images/电影/学爸-1.webp",
+    "poster": "../images/电影/学爸-2.jpg",
+    "subtitle": "家长教育",
+    "badge": "客串",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200is68204/a004785zsi5.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_2a7l2iug71g.html"
+      }
+    ]
+  },
+  {
+    "id": "The Hutong Cowboy",
+    "title": "爆款好人",
+    "type": "电影",
+    "year": "2024",
+    "releaseDate": "2024/10/1",
+    "region": "中国大陆",
+    "genre": "剧情/喜剧",
+    "duration": "113分钟",
+    "rating": "5.2",
+    "role": "张小景",
+    "description": "出租汽车司机张北京因为不够成功，事事不顺。甚至精心准备在儿子婚礼上的发言也被后爹取代。\n　　满腔怨气的他借题发挥，与单亲母亲小琴发生争执，谁知自己出气的样子被路人拍成视频，传遍网络且意外走红。\n　　突如其来的关注度让张北京收获了自己之前想要的一切。然而在体验了一番荒诞的名利沉浮后，张北京最终还是悟到了烟火人间的暖心真情才是自己真正的需要。",
+    "cover": "../images/电影/爆款好人-1.webp",
+    "poster": "../images/电影/爆款好人-2.webp",
+    "subtitle": "北京进行时",
+    "badge": "客串",
+    "playSources": [
+      {
+        "platform": "腾讯视频",
+        "link": "https://v.qq.com/x/cover/mzc00200plzy02v/s4100w2kh6n.html"
+      },
+      {
+        "platform": "爱奇艺",
+        "link": "https://www.iqiyi.com/v_28q78m7g5bc.html"
+      }
+    ]
+  },
+  {
+    "id": "Decent Things",
+    "title": "入型入格",
+    "type": "电影",
+    "year": "2023",
+    "releaseDate": "",
+    "region": "中国大陆",
+    "genre": "剧情/动作/武侠",
+    "duration": "",
+    "rating": "",
+    "role": "叶洪王",
+    "description": "1931年，一位名士从银行行长处借古画赏玩，竟“一借不还”，碍于面子，行长只能“派人取画”。小学武术教师接受委托，途中遇到南方隐士高手，两人“取画”不成反中圈套，只能另寻奇招……",
+    "cover": "../images/电影/入型-1.webp",
+    "poster": "../images/电影/入型-2.webp",
+    "subtitle": "动作武侠",
+    "badge": "待映",
+    "playSources": [
+      {
+        "platform": "杀青特辑",
+        "link": "https://weibo.com/1623886424/NsbYZyICt"
+      }
+    ]
+  },
+  {
+    "id": "Ghost at No.29",
+    "title": "旺铺开业指南",
+    "type": "电影",
+    "year": "2025",
+    "releaseDate": "",
+    "region": "中国大陆",
+    "genre": "喜剧/悬疑/惊悚",
+    "duration": "",
+    "rating": "",
+    "role": "白央",
+    "description": "走投无路的甜品师白央决定放手一搏，在火热商圈用超低价格租了一间凶宅，并以“胆大心细、专业对口、八字过硬、了无牵挂”为条件招聘来三位店员，一位玄学驱鬼，一位物理往生，再加一个纯阳童子，他们立志把凶宅爆改成旺铺，打造一间恐怖网红甜品店。然 而他很快便发现，事情远没有想象中的那么简单，凶宅请鬼容易送鬼难……",
+    "cover": "../images/电影/旺铺-1.webp",
+    "poster": "../images/电影/旺铺-2.webp",
+    "subtitle": "悬疑恐怖",
+    "badge": "待映",
+    "playSources": [
+      {
+        "platform": "微博预告",
+        "link": "https://weibo.com/9138545669/QaJIa7IGj"
+      }
+    ]
   },
   {
     "id": "jianlai",

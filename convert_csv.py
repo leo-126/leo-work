@@ -109,10 +109,14 @@ def main():
             timeline = [
                 {"title": row["title"].strip(), "year": row["year"].strip(), "role": (row.get("角色") or "").strip(), "link": (row.get("链接") or "").strip()}
                 for row in csv.DictReader(io.StringIO(content))
-                if (row.get("title") or "").strip()
+                if (row.get("title") or "").strip() and (row.get("type") or "").strip() != "电影"
             ]
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            (args.output.parent / "timeline.json").write_text(json.dumps(timeline, ensure_ascii=False, indent=2), encoding="utf-8")
+            timeline_output = args.output.parent / "timeline.json"
+            if timeline_output.exists():
+                timeline.extend(item for item in json.loads(timeline_output.read_text(encoding="utf-8"))
+                                if item.get("type") == "电影")
+            timeline_output.write_text(json.dumps(timeline, ensure_ascii=False, indent=2), encoding="utf-8")
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(works, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     except (OSError, ValueError, csv.Error) as error:

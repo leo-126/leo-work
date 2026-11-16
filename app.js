@@ -8,13 +8,13 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=2", document.baseURI);
+const dataUrl = new URL("data/works.json?v=3", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
 let works = [];
 let timeline = [];
-let selectedYear;
+const timelineYears = new Map();
 let featured = [];
 let slideIndex = 0;
 let returnPoint;
@@ -101,16 +101,18 @@ function makeCard(work) {
   return card;
 }
 
-function renderTelevision(visible) {
+function renderFeaturedWorks(visible, movie) {
   const panel = el("section", "television-extras");
   panel.id = "television-extras";
   const heading = el("div", "section-title");
-  heading.append(el("h2", "", televisionCopy.featuredTitle), el("span", "muted", televisionCopy.featuredSubtitle));
+  heading.append(el("h2", "", movie ? "待映电影" : televisionCopy.featuredTitle));
+  if (!movie) heading.append(el("span", "muted", televisionCopy.featuredSubtitle));
   const rail = el("div", "poster-rail");
-  visible
+  const picks = movie ? visible.filter(work => work.badge === "待映").slice(0, 3) : visible
     .filter(work => Number(work.rating) > 0 && Number(work.rating) <= 10)
     .sort((a, b) => Number(b.rating) - Number(a.rating))
-    .slice(0, 8).forEach((work, index) => {
+    .slice(0, 8);
+  picks.forEach((work, index) => {
     const card = el("a", "portrait-card");
     card.href = workRoute(work);
     const image = el("div", "portrait-image");
@@ -122,12 +124,18 @@ function renderTelevision(visible) {
   });
   panel.append(heading, rail);
   carousel.after(panel);
+}
 
+function renderTimeline(visible, category) {
+  const movie = category === "电影";
+  const entries = timeline.filter(item => (item.type || "电视剧") === category);
+  if (!entries.length) return;
   const history = el("section", "timeline-section");
   history.id = "television-timeline";
   const title = el("div", "section-title");
-  title.append(el("h2", "", televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
-  const years = [...new Set(timeline.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
+  title.append(el("h2", "", movie ? "每一步都算数" : televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
+  const years = [...new Set(entries.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
+  let selectedYear = timelineYears.get(category);
   if (!years.includes(selectedYear)) selectedYear = years[0];
   const tabs = el("div", "year-tabs");
   tabs.setAttribute("aria-label", "选择拍摄年份");
@@ -135,7 +143,7 @@ function renderTelevision(visible) {
   content.setAttribute("aria-live", "polite");
   function renderYear() {
     [...tabs.children].forEach(button => button.setAttribute("aria-pressed", String(button.textContent === selectedYear)));
-    const items = timeline.filter(item => item.year === selectedYear);
+    const items = entries.filter(item => item.year === selectedYear);
     const label = el("div", "year-label");
     label.append(el("strong", "", selectedYear), el("span", "", items.length + " 部作品"));
     const list = el("div", "year-works");
@@ -143,7 +151,8 @@ function renderTelevision(visible) {
       const work = visible.find(work => work.title === item.title);
       const row = el(work ? "a" : "div", "year-work");
       if (work) row.href = workRoute(work);
-      row.append(el("strong", "", item.title), el("span", "", "饰 " + item.role));
+      row.append(el("strong", "", item.title));
+      if (item.role) row.append(el("span", "", "饰 " + item.role));
       if (work) row.append(el("span", "year-arrow", "查看作品 ↗"));
       list.append(row);
     });
@@ -152,7 +161,7 @@ function renderTelevision(visible) {
   years.forEach(year => {
     const button = el("button", "", year);
     button.type = "button";
-    button.addEventListener("click", () => { selectedYear = year; renderYear(); });
+    button.addEventListener("click", () => { selectedYear = year; timelineYears.set(category, year); renderYear(); });
     tabs.append(button);
   });
   renderYear();
@@ -225,7 +234,10 @@ function showHome(category, query = "") {
     return;
   }
   get("home-sections").replaceChildren();
-  if (!query && category === "电视剧") renderTelevision(visible);
+  if (!query && ["电视剧", "电影"].includes(category)) {
+    renderFeaturedWorks(visible, category === "电影");
+    renderTimeline(visible, category);
+  }
   get("list-title").textContent = query ? "搜索结果：「" + query + "」"
     : category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
   get("work-count").textContent = visible.length + (category === "Vlog" && !query ? " 个" : " 部");
@@ -485,7 +497,7 @@ async function init() {
     if (!response.ok) throw new Error("HTTP " + response.status);
     works = await response.json();
     if (!Array.isArray(works)) throw new Error("作品数据需要是数组");
-    const timelineResponse = await fetch(new URL("timeline.json", dataUrl));
+    const timelineResponse = await fetch(new URL("timeline.json?v=2", dataUrl));
     if (timelineResponse.ok) timeline = await timelineResponse.json();
     get("status").hidden = true;
     history.scrollRestoration = "manual";
