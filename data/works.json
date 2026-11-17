@@ -4,11 +4,11 @@
     "title": "骑有此理-海南篇",
     "type": "Vlog",
     "year": "2026",
-    "releaseDate": "2026/11/15",
+    "releaseDate": "2026-11-17",
     "genre": "骑有此理",
     "cover": "../images/vlog/海南.webp",
-    "subtitle": "物理意义上烫烫的一集",
-    "episodeInfo": "1 期",
+    "subtitle": "物理意义上湿答答的一集",
+    "episodeInfo": "2 期",
     "heroTitle": "骑有此理",
     "badge": "更新",
     "episodes": [
@@ -32,6 +32,27 @@
             "link": "https://v.douyin.com/RpBCFM8Ua_M/"
           }
         ]
+      },
+      {
+        "title": "EP02 物理意义上湿答答的一集",
+        "playSources": [
+          {
+            "platform": "B站",
+            "link": "https://b23.tv/BV1tnsA6XEqn"
+          },
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/2142058927/5366204021608953"
+          },
+          {
+            "platform": "小红书",
+            "link": "https://xhslink.cn/o/AmtNVeDscDI"
+          },
+          {
+            "platform": "抖音",
+            "link": "https://v.douyin.com/L8A7PbYN6BA/"
+          }
+        ]
       }
     ]
   },
@@ -40,8 +61,8 @@
     "title": "第39届金鸡奖提名者表彰仪式",
     "type": "时刻",
     "year": "2026",
-    "cover": "../images/时刻/第39届金鸡奖提名者表彰仪式.png",
-    "poster": "../images/时刻/金鸡奖-2.webp",
+    "cover": "../images/第39届金鸡奖提名者表彰仪式.png",
+    "poster": "../images/金鸡奖-2.webp",
     "subtitle": "提名者感言 · 现场视频",
     "badge": "现场",
     "episodeInfo": "仪式片段",
@@ -213,7 +234,7 @@
     "role": "小尹",
     "description": "人这一生怎样才算不虚此行？闻善在平衡自己与世界的关系中寻找着答案。他是一个“掉队”的普通编剧，一次偶然的机会让他改以撰写悼词为生。在与各色普通人的相遇里，闻善慰藉他人、也获得了温暖，最终找到了自己的人生方向。",
     "cover": "../images/电影/不虚此行-1.webp",
-    "poster": "../images/电影/不虚此行-2.jpg",
+    "poster": "../images/电影/不虚此行-2.webp",
     "subtitle": "25届上海国际电影节 金爵奖 最佳影片(提名)",
     "badge": "文艺",
     "playSources": [
@@ -271,7 +292,7 @@
     "role": "中介小王",
     "description": "雷大力为了让儿子雷小米能够拥有更高的人生起点，在单亲妈妈刘真真的带领下，被迫卷入了“幼升小”的激烈角逐。面对残酷的现实，父子的生活困境应该如何破局？几组家庭又将做出怎样的人生抉择？",
     "cover": "../images/电影/学爸-1.webp",
-    "poster": "../images/电影/学爸-2.jpg",
+    "poster": "../images/电影/学爸-2.webp",
     "subtitle": "家长教育",
     "badge": "客串",
     "playSources": [

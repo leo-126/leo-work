@@ -4,11 +4,11 @@ const homeRecommendations = ["cycling-hainan-ep01", "golden-rooster-39", "qun-xi
 const televisionCopy = {
   featuredTitle: "精选剧集",
   featuredSubtitle: "光影之间，遇见不同人生",
-  timelineTitle: "每一步都算数",
+  timelineTitle: "百年影人进行时",
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=4", document.baseURI);
+const dataUrl = new URL("data/works.json?v=5", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -136,7 +136,7 @@ function renderTimeline(visible, category) {
   const history = el("section", "timeline-section");
   history.id = "television-timeline";
   const title = el("div", "section-title");
-  title.append(el("h2", "", movie ? "百年影人进行时" : televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
+  title.append(el("h2", "", movie ? "每一步都算数" : televisionCopy.timelineTitle), el("span", "muted", televisionCopy.timelineSubtitle));
   const years = [...new Set(entries.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
   let selectedYear = timelineYears.get(category);
   if (!years.includes(selectedYear)) selectedYear = years[0];
