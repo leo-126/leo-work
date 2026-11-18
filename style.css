@@ -165,7 +165,7 @@ video.player { object-fit: contain; }
 .portrait-image img { transition: transform .2s; }
 .portrait-card:hover img { transform: scale(1.04); }
 .artwork { opacity: 0; }
-img.artwork { transition: opacity .35s ease, transform .22s ease; }
+img.artwork { transition: opacity .12s ease, transform .22s ease; }
 .artwork.is-loaded { opacity: 1; }
 .player-placeholder img.artwork { opacity: 0; }
 .player-placeholder img.artwork.is-loaded { opacity: .5; }

@@ -43,16 +43,16 @@ const imageObserver = "IntersectionObserver" in window ? new IntersectionObserve
     delete img.dataset.src;
     imageObserver.unobserve(img);
   }
-}, { rootMargin: "240px" }) : null;
+}, { rootMargin: "900px" }) : null;
 
 function artwork(path, lazy = false, priority = false) {
   const img = el("img", "artwork");
-  img.addEventListener("load", async () => {
-    try { await img.decode(); } catch { /* Loaded images can still be displayed if decode is unavailable. */ }
+  img.addEventListener("load", () => {
     if (img.naturalWidth > 0) img.classList.add("is-loaded");
   }, { once: true });
   img.alt = "";
-  img.loading = lazy ? "lazy" : "eager";
+  // The observer controls when requests start. Avoid a second native lazy delay.
+  img.loading = lazy && !imageObserver ? "lazy" : "eager";
   img.decoding = "async";
   if (priority) img.fetchPriority = "high";
   if (path) {
