@@ -8,7 +8,7 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=5", document.baseURI);
+const dataUrl = new URL("data/works.json?v=6", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -244,6 +244,26 @@ function showHome(category, query = "") {
   get("list-title").textContent = query ? "搜索结果：「" + query + "」"
     : category === "首页" ? "全部作品" : category === "电视剧" ? "全部剧集" : category;
   get("work-count").textContent = visible.length + (category === "Vlog" && !query ? " 个" : " 部");
+  const groupedVlog = category === "Vlog" && !query;
+  get("grid").classList.toggle("vlog-groups", groupedVlog);
+  if (groupedVlog && visible.length) {
+    const groups = new Map();
+    for (const work of visible) {
+      const name = work.genre || "其他";
+      if (!groups.has(name)) groups.set(name, []);
+      groups.get(name).push(work);
+    }
+    get("grid").replaceChildren(...[...groups].map(([name, items]) => {
+      const section = el("section", "vlog-group");
+      const heading = el("div", "section-title");
+      heading.append(el("h2", "", name), el("span", "muted", items.length + " 个"));
+      const cards = el("div", "grid");
+      cards.append(...items.map(makeCard));
+      section.append(heading, cards);
+      return section;
+    }));
+    return;
+  }
   get("grid").replaceChildren(...(visible.length ? visible.map(makeCard) : [
     el("p", "empty-results", query ? "没有找到匹配的作品，试试其他关键词。" : "这个分类暂时还没有作品。")
   ]));

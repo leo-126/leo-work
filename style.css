@@ -54,6 +54,9 @@ nav a[aria-current] { color: white; background: var(--green); }
 #work-count { flex: none; }
 #work-count, .muted { color: var(--muted); font-size: 13px; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.grid.vlog-groups { display: block; }
+.vlog-group .section-title { margin-block: 24px 16px; }
+.vlog-group + .vlog-group { margin-top: 36px; }
 .home-section + .home-section { margin-top: clamp(24px, 4vw, 46px); }
 .home-section-title { justify-content: space-between; }
 @media (min-width: 941px) {
