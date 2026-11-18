@@ -4,11 +4,11 @@ const homeRecommendations = ["cycling-hainan-ep01", "golden-rooster-39", "qun-xi
 const televisionCopy = {
   featuredTitle: "精选剧集",
   featuredSubtitle: "光影之间，遇见不同人生",
-  timelineTitle: "百年影人进行时",
+  timelineTitle: "每一步都算数",
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=6", document.baseURI);
+const dataUrl = new URL("data/works.json?v=7", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -35,8 +35,22 @@ function workRoute(work) {
   return "#work/" + encodeURIComponent(work.id);
 }
 
+const imageObserver = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    const img = entry.target;
+    img.src = img.dataset.src;
+    delete img.dataset.src;
+    imageObserver.unobserve(img);
+  }
+}, { rootMargin: "240px" }) : null;
+
 function artwork(path, lazy = false, priority = false) {
-  const img = el("img");
+  const img = el("img", "artwork");
+  img.addEventListener("load", async () => {
+    try { await img.decode(); } catch { /* Loaded images can still be displayed if decode is unavailable. */ }
+    if (img.naturalWidth > 0) img.classList.add("is-loaded");
+  }, { once: true });
   img.alt = "";
   img.loading = lazy ? "lazy" : "eager";
   img.decoding = "async";
@@ -46,13 +60,14 @@ function artwork(path, lazy = false, priority = false) {
     if (original.origin === location.origin && decodeURIComponent(original.pathname).includes("/images/电影/")) {
       original.searchParams.set("v", "2");
     }
-    const optimized = new URL(original);
-    if (optimized.origin === location.origin) optimized.pathname = optimized.pathname.replace(/\.(jpe?g|png)$/i, ".webp");
-    img.src = optimized.href;
     img.addEventListener("error", () => {
-      if (img.src !== original.href) img.src = original.href;
-      else img.remove();
+      imageObserver?.unobserve(img);
+      img.remove();
     }, { once: true });
+    if (lazy && imageObserver) {
+      img.dataset.src = original.href;
+      imageObserver.observe(img);
+    } else img.src = original.href;
   }
   return img;
 }
@@ -119,7 +134,7 @@ function renderFeaturedWorks(visible, movie) {
     const card = el("a", "portrait-card");
     card.href = workRoute(work);
     const image = el("div", "portrait-image");
-    image.append(artwork(work.poster, index >= 4));
+    image.append(artwork(work.poster, true));
     if (work.badge) image.append(badge(work.badge));
     if (work.rating) image.append(el("span", "rating", work.rating));
     card.append(image, el("h3", "", work.title), el("p", "", work.role ? "饰 " + work.role : work.subtitle));
@@ -136,7 +151,7 @@ function renderTimeline(visible, category) {
   const history = el("section", "timeline-section");
   history.id = "television-timeline";
   const title = el("div", "section-title");
-  title.append(el("h2", "", movie ? "每一步都算数" : televisionCopy.timelineTitle),
+  title.append(el("h2", "", movie ? "百年影人进行时" : televisionCopy.timelineTitle),
     el("span", "muted", televisionCopy.timelineSubtitle + " · 共 " + entries.length + " 部"));
   const years = [...new Set(entries.map(item => item.year))].sort((a, b) => Number(b) - Number(a));
   let selectedYear = timelineYears.get(category);
@@ -201,6 +216,7 @@ function renderHomeSections(recommendations) {
 }
 
 function showHome(category, query = "") {
+  imageObserver?.disconnect();
   get("television-extras")?.remove();
   get("television-timeline")?.remove();
   home.classList.toggle("television-page", category === "电视剧");
@@ -388,6 +404,7 @@ function showVlog(work) {
 }
 
 function showDetail(work) {
+  imageObserver?.disconnect();
   home.hidden = true;
   detail.hidden = false;
   const vlog = work.type === "Vlog";

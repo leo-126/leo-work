@@ -164,6 +164,14 @@ video.player { object-fit: contain; }
 .portrait-image { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 12px; background: #dce4d7; }
 .portrait-image img { transition: transform .2s; }
 .portrait-card:hover img { transform: scale(1.04); }
+.artwork { opacity: 0; }
+img.artwork { transition: opacity .35s ease, transform .22s ease; }
+.artwork.is-loaded { opacity: 1; }
+.player-placeholder img.artwork { opacity: 0; }
+.player-placeholder img.artwork.is-loaded { opacity: .5; }
+@media (prefers-reduced-motion: reduce) {
+  img.artwork { transition: none; }
+}
 .portrait-card h3 { font-size: 16px; margin: 11px 0 5px; }
 .portrait-card p { color: var(--muted); font-size: 13px; margin: 0; }
 .portrait-image .badge { right: 7px; top: 7px; padding: 4px 7px; font-size: 11px; }
