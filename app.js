@@ -8,7 +8,7 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=8", document.baseURI);
+const dataUrl = new URL("data/works.json?v=9", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");
@@ -387,18 +387,42 @@ function showVlog(work) {
     const title = episode.title || "第 " + (index + 1) + " 期";
     screen.replaceChildren(renderPlayback({ ...episode, title: work.title + " · " + title, cover: work.cover }, true));
     current.textContent = title;
-    [...tabs.children].forEach((tab, i) => tab.setAttribute("aria-pressed", String(i === index)));
+    [...tabs.children].forEach(tab => tab.setAttribute("aria-pressed", String(Number(tab.dataset.episodeIndex) === index)));
     links.replaceChildren(renderSources(episode.playSources || [], "本期播放链接"));
   }
-  episodes.forEach((episode, index) => {
-    const button = el("button", "", "第 " + (index + 1) + " 期");
+  const years = el("div", "episode-tabs");
+  years.setAttribute("role", "group");
+  years.setAttribute("aria-label", "选择年份");
+  function addEpisodeButton(episode, index, label) {
+    const button = el("button", "", label);
     button.type = "button";
+    button.dataset.episodeIndex = String(index);
     button.title = episode.title || "";
     button.addEventListener("click", () => select(index));
     tabs.append(button);
-  });
+  }
+  if (work.calendarEpisodes) {
+    tabs.setAttribute("aria-label", "选择月份");
+    function selectYear(year) {
+      [...years.children].forEach(button => button.setAttribute("aria-pressed", String(button.textContent === year + "年")));
+      tabs.replaceChildren();
+      episodes.forEach((episode, index) => {
+        if (episode.year === year) addEpisodeButton(episode, index, episode.month + "月");
+      });
+      select(episodes.findIndex(episode => episode.year === year));
+    }
+    for (const year of [...new Set(episodes.map(episode => episode.year))].sort((a, b) => Number(b) - Number(a))) {
+      const button = el("button", "", year + "年");
+      button.type = "button";
+      button.addEventListener("click", () => selectYear(year));
+      years.append(button);
+    }
+    selectYear(episodes[0].year);
+  } else episodes.forEach((episode, index) => addEpisodeButton(episode, index, "第 " + (index + 1) + " 期"));
   panel.append(el("p", "vlog-label", [work.genre || "Vlog", work.year].filter(Boolean).join(" · ")),
-    el("h1", "", work.title), tabs, current, links);
+    el("h1", "", work.title));
+  if (work.calendarEpisodes) panel.append(years);
+  panel.append(tabs, current, links);
   detail.append(screen, panel);
   select(0);
 }

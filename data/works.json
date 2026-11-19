@@ -1354,5 +1354,415 @@
         "link": "https://www.iqiyi.com/v_19rroc615w.html"
       }
     ]
+  },
+  {
+    "id": "vlog-30-notes",
+    "title": "30小记",
+    "type": "Vlog",
+    "genre": "日常",
+    "year": "2026",
+    "releaseDate": "2026/10/30",
+    "cover": "../images/vlog/30小记.webp",
+    "subtitle": "每月生活记录",
+    "episodeInfo": "33 期",
+    "calendarEpisodes": true,
+    "episodes": [
+      {
+        "title": "打碟、运动、拍摄、配音、盯后期……欢迎收看：高能量人@吴磊LEO 的生活小记",
+        "year": "2026",
+        "month": "10",
+        "releaseDate": "2026/10/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5359657141862432"
+          }
+        ]
+      },
+      {
+        "title": "那一天，@吴磊LEO 吃到了一顿极其“丰盛”的黄瓜宴，看起来他很喜欢的样子（确信）",
+        "year": "2026",
+        "month": "7",
+        "releaseDate": "2026/7/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5326411586535529"
+          }
+        ]
+      },
+      {
+        "title": "8月1日请看#吴磊电影群星闪耀时#",
+        "year": "2026",
+        "month": "6",
+        "releaseDate": "2026/6/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5315457226309659"
+          }
+        ]
+      },
+      {
+        "title": "5月不全记录之板的海南观察日记🧩",
+        "year": "2026",
+        "month": "5",
+        "releaseDate": "2026/5/31",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5304637159571541"
+          }
+        ]
+      },
+      {
+        "title": "欢迎来到——剧组以外的世界",
+        "year": "2026",
+        "month": "4",
+        "releaseDate": "2026/4/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5293353445556238"
+          }
+        ]
+      },
+      {
+        "title": "请拆可爱盲袋🎁（内有体育生学长降临",
+        "year": "2026",
+        "month": "3",
+        "releaseDate": "2026/3/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/QyrZhwAPV"
+          }
+        ]
+      },
+      {
+        "title": "彩蛋局——电竞奇妙夜",
+        "year": "2026",
+        "month": "2",
+        "releaseDate": "2026/2/28",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5271213145260101"
+          }
+        ]
+      },
+      {
+        "title": "一些很帅的live图",
+        "year": "2026",
+        "month": "1",
+        "releaseDate": "2026/1/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/QpvVXu4Zm"
+          }
+        ]
+      },
+      {
+        "title": "高能量老板的一天",
+        "year": "2025",
+        "month": "12",
+        "releaseDate": "2025/12/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5249499514470406"
+          }
+        ]
+      },
+      {
+        "title": "送上一些极限飞行工作日记✈️",
+        "year": "2025",
+        "month": "11",
+        "releaseDate": "2025/12/9",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/Qhzyc3Wk7"
+          }
+        ]
+      },
+      {
+        "title": "香香甜甜+运动能量满满的3个月@吴磊LEO 小趣事大大大合集",
+        "year": "2025",
+        "month": "10",
+        "releaseDate": "2025/10/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5227373201653780"
+          }
+        ]
+      },
+      {
+        "title": "@吴磊LEO 发来一段异国街头漫步邀请-伦敦",
+        "year": "2025",
+        "month": "9",
+        "releaseDate": "2025/9/26",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5215154489458702"
+          }
+        ]
+      },
+      {
+        "title": "宝格丽活动、东极岛路演",
+        "year": "2025",
+        "month": "8",
+        "releaseDate": "2025/8/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5205285636341870"
+          }
+        ]
+      },
+      {
+        "title": "阿荡卷毛图",
+        "year": "2025",
+        "month": "7",
+        "releaseDate": "2025/7/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/PDtZru3oR"
+          }
+        ]
+      },
+      {
+        "title": "电影节活动，很米很米",
+        "year": "2025",
+        "month": "6",
+        "releaseDate": "2025/6/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5183174720815153"
+          }
+        ]
+      },
+      {
+        "title": "广告拍摄，含很帅的老头背心穿搭",
+        "year": "2025",
+        "month": "5",
+        "releaseDate": "2025/5/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5171939183099940"
+          }
+        ]
+      },
+      {
+        "title": "广告、电影宣传拍摄",
+        "year": "2025",
+        "month": "4",
+        "releaseDate": "2025/4/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5161078909239350"
+          }
+        ]
+      },
+      {
+        "title": "凌晨骑摩托爬山花絮",
+        "year": "2025",
+        "month": "3",
+        "releaseDate": "2025/3/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5149690015186957"
+          }
+        ]
+      },
+      {
+        "title": "记录一些以红色为主色调的日常",
+        "year": "2025",
+        "month": "1",
+        "releaseDate": "2025/1/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5128458788077578"
+          }
+        ]
+      },
+      {
+        "title": "拍摄记录·写于 #吴磊四分之一# 第二镜《原点》 ​",
+        "year": "2024",
+        "month": "12",
+        "releaseDate": "2024/12/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5117084653518883"
+          }
+        ]
+      },
+      {
+        "title": "广告拍摄，在酒店看楼下的粉丝",
+        "year": "2024",
+        "month": "11",
+        "releaseDate": "2024/11/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5106347528618001"
+          }
+        ]
+      },
+      {
+        "title": "多图--老头背心",
+        "year": "2024",
+        "month": "10",
+        "releaseDate": "2024/10/31",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/OE3OfAwa8"
+          }
+        ]
+      },
+      {
+        "title": "机车LEO， 难得一遇的变装赛道拍摄",
+        "year": "2024",
+        "month": "9",
+        "releaseDate": "2024/9/29",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5083895482482728"
+          }
+        ]
+      },
+      {
+        "title": "盲盒",
+        "year": "2024",
+        "month": "8",
+        "releaseDate": "2024/8/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/OuDjPq6lF"
+          }
+        ]
+      },
+      {
+        "title": "各种品牌活动记录",
+        "year": "2024",
+        "month": "7",
+        "releaseDate": "2024/7/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5061771707482133"
+          }
+        ]
+      },
+      {
+        "title": "电影节活动",
+        "year": "2024",
+        "month": "6",
+        "releaseDate": "2024/6/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/6019229199/Olmf9uONh"
+          }
+        ]
+      },
+      {
+        "title": "海边的老头背心，瓦努阿图寄回来的明信片",
+        "year": "2024",
+        "month": "5",
+        "releaseDate": "2024/5/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5039666999787526"
+          }
+        ]
+      },
+      {
+        "title": "冲浪，杂志拍摄",
+        "year": "2024",
+        "month": "4",
+        "releaseDate": "2024/4/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5027711073058871"
+          }
+        ]
+      },
+      {
+        "title": "路演记录·目莲发芽中",
+        "year": "2024",
+        "month": "3",
+        "releaseDate": "2024/3/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5017562556071957"
+          }
+        ]
+      },
+      {
+        "title": "冬日的末尾，馥郁的香气坠入软绵绵的纯白云朵",
+        "year": "2024",
+        "month": "2",
+        "releaseDate": "2024/2/28",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:5006362082476089"
+          }
+        ]
+      },
+      {
+        "title": "万物皆可健身",
+        "year": "2024",
+        "month": "1",
+        "releaseDate": "2024/1/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:4995819682594832"
+          }
+        ]
+      },
+      {
+        "title": "刚满24岁的小磊磊",
+        "year": "2023",
+        "month": "12",
+        "releaseDate": "2023/12/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:4984585826533381"
+          }
+        ]
+      },
+      {
+        "title": "活力满满赶通告",
+        "year": "2023",
+        "month": "11",
+        "releaseDate": "2023/11/30",
+        "playSources": [
+          {
+            "platform": "微博",
+            "link": "https://weibo.com/tv/show/1034:4973503850676327"
+          }
+        ]
+      }
+    ]
   }
 ]
