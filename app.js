@@ -78,6 +78,14 @@ function badge(label) {
 }
 
 function coverLabel(work) {
+  if (work.calendarEpisodes) {
+    return (work.episodes || []).map(episode => episode.releaseDate).filter(Boolean)
+      .sort((a, b) => {
+        const parts = value => value.split(/[/-]/).map(Number);
+        const x = parts(a), y = parts(b);
+        return y[0] - x[0] || y[1] - x[1] || y[2] - x[2];
+      })[0] || work.releaseDate;
+  }
   return work.type === "Vlog" ? work.releaseDate : work.episodeInfo;
 }
 
@@ -268,7 +276,8 @@ function showHome(category, query = "") {
     for (const work of visible) {
       const name = work.genre || "其他";
       if (!groups.has(name)) groups.set(name, []);
-      groups.get(name).push(work);
+      if (work.id === "vlog-30-notes") groups.get(name).unshift(work);
+      else groups.get(name).push(work);
     }
     get("grid").replaceChildren(...[...groups].map(([name, items]) => {
       const section = el("section", "vlog-group");
