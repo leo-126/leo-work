@@ -8,7 +8,7 @@ const televisionCopy = {
   timelineSubtitle: "按拍摄时间",
 };
 const get = (id) => document.getElementById(id);
-const dataUrl = new URL("data/works.json?v=9", document.baseURI);
+const dataUrl = new URL("data/works.json?v=10", document.baseURI);
 const home = get("home");
 const detail = get("detail");
 const carousel = get("carousel");

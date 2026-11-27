@@ -4,13 +4,13 @@
     "title": "骑有此理-海南篇",
     "type": "Vlog",
     "year": "2026",
-    "releaseDate": "2026-11-17",
+    "releaseDate": "2026-11-27",
     "genre": "骑有此理",
     "cover": "../images/vlog/海南.webp",
-    "subtitle": "物理意义上湿答答的一集",
-    "episodeInfo": "2 期",
+    "subtitle": "最想回家的一集",
+    "episodeInfo": "3 期",
     "heroTitle": "骑有此理",
-    "badge": "更新",
+    "badge": "收官",
     "episodes": [
       {
         "title": "物理意义上烫烫的一集",
@@ -34,7 +34,7 @@
         ]
       },
       {
-        "title": "EP02 物理意义上湿答答的一集",
+        "title": "物理意义上湿答答的一集",
         "playSources": [
           {
             "platform": "B站",
@@ -51,6 +51,27 @@
           {
             "platform": "抖音",
             "link": "https://v.douyin.com/L8A7PbYN6BA/"
+          }
+        ]
+      },
+      {
+        "title": "最想回家的一集",
+        "playSources": [
+          {
+            "platform": "B站",
+            "link": "https://b23.tv/BV1n21Ez9EQs"
+          },
+          {
+            "platform": "小红书",
+            "link": "https://xhslink.cn/o/A7mjWPsBCM3"
+          },
+          {
+            "platform": "微博",
+            "link": "https://video.weibo.com/show?fid=1034:5369664822509620"
+          },
+          {
+            "platform": "抖音",
+            "link": "https://v.douyin.com/b4UrVPm-fYg/"
           }
         ]
       }
